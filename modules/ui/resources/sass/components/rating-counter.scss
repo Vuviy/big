@@ -1,0 +1,26 @@
+.rating-counter {
+	$this: &;
+
+	display: flex;
+
+	&__block {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		padding: microbe-rem(13);
+		background-color: var(--color-white);
+		border-radius: microbe-rem($br-sm);
+		text-transform: uppercase;
+		min-width: microbe-rem(87);
+
+		@include microbe-media($screen-vw) {
+			border-radius: vw($br-sm);
+			padding: vw(13);
+			min-width: vw(87);
+		}
+
+		&:not(:last-child):not(:only-child) {
+			margin-right: 1px;
+		}
+	}
+}

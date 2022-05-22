@@ -1,0 +1,31 @@
+{
+    "develop": [
+        "git reset --hard",
+        "git checkout develop",
+        "git pull origin develop",
+        "composer74 install",
+        "php74 artisan cms:install --force --no-interaction",
+        "php74 artisan cache:clear",
+        "php74 artisan view:cache",
+        "php74 artisan config:cache",
+        "php74 artisan queue:restart",
+        "php74 artisan livewire:discover",
+        "npm ci",
+        "npm run prod"
+    ],
+    "master": [
+        "git reset --hard HEAD",
+        "git checkout master",
+        "git pull origin master",
+        "composer install --no-dev",
+        "php artisan cms:install --force --no-interaction",
+        "php artisan route:trans:cache",
+        "php artisan cache:clear",
+        "php artisan view:cache",
+        "php artisan config:cache",
+        "php artisan queue:restart",
+        "php artisan livewire:discover",
+        "npm ci",
+        "npm run prod"
+    ]
+}

@@ -1,0 +1,125 @@
+.modal {
+	$this: &;
+
+	-webkit-tap-highlight-color: transparent;
+	-webkit-backface-visibility: hidden;
+	align-items: flex-start;
+	background: rgba(var(--color-black-rgb), 0.6);
+	display: flex;
+	justify-content: center;
+	overflow: hidden auto;
+	outline: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $zi-modal;
+
+	&_load {
+		.modal-preload {
+			display: none;
+		}
+	}
+}
+
+.modal-box {
+	display: flex;
+	position: relative;
+	padding: 0 microbe-rem(8);
+	margin: auto;
+	width: 100%;
+
+	@include microbe-media($breakpoint-sm, max) {
+		padding: 0;
+	}
+}
+
+.modal-close {
+	--icon-color: var(--color-pantone-gray);
+
+	border-radius: 50%;
+	position: absolute;
+	right: microbe-rem(20);
+	top: microbe-rem(50);
+	z-index: 1;
+	transition: background-color $duration-fast ease, opacity $duration-fast ease;
+
+	@include microbe-media($screen-vw) {
+		right: vw(20);
+		top: vw(50);
+	}
+
+	svg {
+		position: relative;
+		height: 100%;
+		width: 100%;
+	}
+
+	&:hover {
+		opacity: 0.65;
+	}
+
+	&:active {
+		svg {
+			top: 1px;
+		}
+	}
+}
+
+.modal-preload {
+	@include absolute-centering(false);
+
+	color: var(--color-white);
+	animation: spin 1.4s linear infinite;
+	height: microbe-rem(25);
+	width: microbe-rem(25);
+
+	svg {
+		display: block;
+	}
+
+	circle {
+		stroke: currentColor;
+		animation: circular-dash 1.4s ease-in-out infinite;
+		stroke-dasharray: 80px, 200px;
+		stroke-dashoffset: 0;
+	}
+}
+
+// inner styles
+.modal-content {
+	overflow: hidden;
+	box-shadow: var(--shadow-default);
+	background: var(--color-white);
+	border-radius: microbe-rem($br-md);
+	margin: microbe-rem(25) auto;
+	min-width: microbe-rem(300);
+	max-width: microbe-rem(412);
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	padding: microbe-rem(50) microbe-rem(20);
+
+	@include microbe-media($screen-vw) {
+		max-width: vw(412);
+		border-radius: vw($br-md);
+		padding: vw(50) vw(20);
+	}
+
+	&--size-xxl {
+		max-width: microbe-rem(907);
+
+		@include microbe-media($screen-vw) {
+			max-width: vw(907);
+		}
+	}
+
+	&--size-xxxl {
+		max-width: microbe-rem(928);
+
+		@include microbe-media($screen-vw) {
+			max-width: vw(928);
+		}
+	}
+}

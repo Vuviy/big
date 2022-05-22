@@ -1,0 +1,23 @@
+$breakpoint-xxs: 375px;
+$breakpoint-xs: 480px;
+$breakpoint-sm: 568px;
+$breakpoint-ms: 640px;
+$breakpoint-md: 768px;
+$breakpoint-df: 1024px;
+$breakpoint-lg: 1280px;
+$breakpoint-xl: 1441px;
+$breakpoint-xxl: 1660px;
+$breakpoint-hd: 1980px;
+
+$screen-vw: $breakpoint-lg;
+
+$breakpoints-map: (
+	xxs: $breakpoint-xxs,
+	xs: $breakpoint-xs,
+	sm: $breakpoint-sm,
+	md: $breakpoint-md,
+	df: $breakpoint-df,
+	// lg: $breakpoint-lg,
+	// xl: $breakpoint-xl,
+	// xxl: $breakpoint-xxl
+);

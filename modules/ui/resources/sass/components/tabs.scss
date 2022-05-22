@@ -1,0 +1,88 @@
+.tabs {
+	$this: &;
+
+	&__header {
+		position: relative;
+		border-bottom: 1px solid var(--color-faint-weak);
+		overflow: auto hidden;
+	}
+
+	&__header-inner {
+		display: inline-grid;
+		grid-auto-flow: column;
+		grid-template-columns: max-content;
+		gap: microbe-rem(20);
+
+		@include microbe-media($screen-vw) {
+			gap: vw(50);
+		}
+	}
+
+	&__body {
+		padding-top: microbe-rem(20);
+
+		@include microbe-media($screen-vw) {
+			padding-top: vw(40);
+		}
+	}
+
+	&__body-inner {
+		position: relative;
+		transition: max-height $duration-fast linear;
+	}
+
+	&__button {
+		--control-font-color: var(--color-pantone-gray);
+		font-size: microbe-rem(14);
+		line-height: microbe-em(24, 14);
+		font-weight: $font-weight-bold;
+		text-transform: uppercase;
+		padding: microbe-rem(16) 0;
+		flex-shrink: 0;
+		border-bottom: 1px solid transparent;
+		white-space: nowrap;
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(14);
+			padding: vw(16) 0;
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				--control-font-color: var(--color-base-strong);
+				border-bottom-color: var(--color-base-strong);
+			}
+
+			&:active {
+				--control-font-color: var(--color-black);
+			}
+		}
+
+		&.is-active {
+			--control-font-color: var(--color-black);
+		}
+	}
+
+	&__bottom-line {
+		--left: 0;
+		--width: 0;
+
+		opacity: 1;
+		position: absolute;
+		bottom: 0;
+		left: var(--left);
+		width: var(--width);
+		height: microbe-rem(2);
+		background-color: var(--color-black);
+		transition: left $duration-fast linear, width $duration-fast linear;
+
+		@include microbe-media($screen-vw) {
+			height: vw(2);
+		}
+	}
+}
+
+.tabs-container {
+	transition: height 300ms;
+	position: relative;
+}

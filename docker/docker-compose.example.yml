@@ -1,0 +1,101 @@
+version: "3"
+
+services:
+
+  nginx:
+    image: webdevops/nginx:alpine
+    container_name: ${APP_NAME}_web
+    hostname: ${APP_NAME}_web
+    ports:
+      - ${DOCKER_ADDRESS}:80:80
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_PHP_SOCKET: ${APP_NAME}_php:9000
+      LOG_STDOUT: /app/storage/logs/web.access.log
+      LOG_STDERR: /app/storage/logs/web.errors.log
+    volumes:
+      - ./:/app:rw,cached
+    working_dir: /app
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./
+      dockerfile: docker/conf/php/Dockerfile
+    container_name: ${APP_NAME}_php
+    hostname: ${APP_NAME}_php
+    working_dir: /app
+    volumes:
+      - ./:/app/
+      - ./docker/conf/php/.bashrc:/root/.bashrc
+      - ./docker/conf/php/.bash_aliases:/root/.bash_aliases
+    environment:
+      TERM: xterm-256color
+      COMPOSER_ALLOW_SUPERUSER: 1
+      XDEBUG_CONFIG: "remote_host=${DOCKER_ADDRESS} remote_enable=1"
+      PHP_IDE_CONFIG: "serverName=${APP_NAME}"
+    ports:
+      - ${DOCKER_ADDRESS}:6001:6001
+    depends_on:
+      - mysql
+      - mysql_testing
+      - redis
+    entrypoint: ["/bin/bash", "/app/docker/bin/php_start.sh"]
+
+  mysql:
+    image: mysql:5.7.28
+    container_name: ${APP_NAME}_mysql
+    ports:
+      - ${DOCKER_ADDRESS}:${DB_PORT}:${DB_PORT}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+    volumes:
+      - ./storage/mysql/:/var/lib/mysql/
+
+  mysql_testing:
+    image: mysql:5.7.28
+    container_name: ${APP_NAME}_mysql_testing
+    ports:
+      - ${DOCKER_ADDRESS}:3307:${DB_PORT}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+    volumes:
+      - ./storage/mysql_testing/:/var/lib/mysql/
+
+  redis:
+    image: nbtri/alpine-redis
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    container_name: ${APP_NAME}_redis
+    hostname: ${APP_NAME}_redis
+    ports:
+      - ${DOCKER_ADDRESS}:${REDIS_PORT}:${REDIS_PORT}
+
+  node:
+    image: node:14.13.0-buster-slim
+    container_name: ${APP_NAME}_node
+    hostname: ${APP_NAME}_node
+    working_dir: /app
+    volumes:
+      - ./:/app
+    tty: true
+
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin:latest
+#    container_name: ${APP_NAME}_phpmyadmin
+#    environment:
+#      PMA_HOST: mysql
+#      PMA_USER: ${DB_USERNAME}
+#      PMA_PASSWORD: ${DB_PASSWORD}
+#    ports:
+#      - ${DOCKER_ADDRESS}:8080:80
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${DOCKER_NETWORK}

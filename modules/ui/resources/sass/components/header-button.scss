@@ -1,0 +1,67 @@
+.header-button {
+	$this: &;
+
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: microbe-rem(30);
+	height: microbe-rem(30);
+	text-decoration: none;
+	position: relative;
+	color: var(--color-black);
+
+	@include microbe-media($screen-vw) {
+		width: vw(30);
+		height: vw(30);
+	}
+
+	@media (hover: hover) {
+		&:hover {
+			#{$this}__icon {
+				--icon-color: var(--color-pantone-lemon);
+			}
+		}
+
+		&:active {
+			color: var(--color-black);
+
+			#{$this}__icon {
+				--icon-color: var(--color-pantone-orange);
+			}
+		}
+	}
+
+	&__icon {
+		--icon-color: var(--color-white);
+
+		width: microbe-rem(20);
+		height: microbe-rem(20);
+
+		@include microbe-media($screen-vw) {
+			width: vw(20);
+			height: vw(20);
+		}
+	}
+
+	&__counter {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		flex-shrink: 0;
+		background-color: var(--color-pantone-lemon);
+		border-radius: microbe-rem($br-md);
+		padding: 0 microbe-rem(3);
+		top: microbe-rem(-7);
+		right: microbe-rem(-7);
+		min-width: microbe-rem(20);
+
+		@include microbe-media($screen-vw) {
+			border-radius: vw($br-md);
+			padding: 0 vw(3);
+			top: vw(-7);
+			right: vw(-7);
+			min-width: vw(20);
+		}
+	}
+}

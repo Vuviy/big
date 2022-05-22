@@ -1,0 +1,15 @@
+@extends('cms-ui::layouts.base')
+
+@section('main')
+    @widget('slider')
+    @widget('media-blocks:media-blocks', ['type' => 'top-categories-1', 'limit' => 8], 'cms-media-blocks::site.widgets.top-categories-1')
+    @widget('news:latest')
+    @widget('catalog:popular', ['showRegisterHint' => true])
+    @widget('media-blocks:media-blocks', ['type' => 'top-categories-2', 'limit' => 6], 'cms-media-blocks::site.widgets.top-categories-2')
+    @widget('catalog:sale', ['modification' => 'bg-faint-weak', 'whiteTheme' => false])
+    @widget('media-blocks:media-blocks', ['type' => 'top-categories-3', 'limit' => 6], 'cms-media-blocks::site.widgets.top-categories-3')
+    @widget('catalog:novelty')
+    @widget('benefits:benefits', ['type' => \WezomCms\Benefits\Enums\BenefitsTypes::PROGRESS, 'limit' => 6], 'cms-benefits::site.widgets.benefits.progress')
+    @widget('benefits:benefits', [], 'cms-benefits::site.widgets.benefits.common')
+    @include('cms-ui::partials.seo-text')
+@endsection

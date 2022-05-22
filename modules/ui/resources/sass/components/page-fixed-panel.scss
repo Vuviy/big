@@ -1,0 +1,20 @@
+.page-fixed-panel {
+	position: fixed;
+	bottom: 2%;
+	padding: 0 microbe-rem(12);
+	z-index: 10;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	pointer-events: none;
+
+	@include microbe-media($breakpoint-df) {
+		bottom: vw(50);
+	}
+
+	div {
+		pointer-events: auto;
+	}
+}

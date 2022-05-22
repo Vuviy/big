@@ -1,0 +1,72 @@
+.section {
+	$this: &;
+
+	--section-off-t: 0;
+	--section-off-b: 0;
+
+	padding: var(--section-off-t) 0 var(--section-off-b);
+
+	&--overflow-hidden {
+		overflow: hidden;
+	}
+
+	&--bg-black {
+		background-color: var(--color-black);
+	}
+
+	&--bg-base-strong {
+		background-color: var(--color-base-strong);
+	}
+
+	&--bg-faint-weak {
+		background-color: var(--color-faint-weak);
+	}
+
+	&--off-t-xs {
+		--section-off-t: #{microbe-rem(20)};
+
+		@include microbe-media($screen-vw) {
+			--section-off-t: #{vw(20)};
+		}
+	}
+
+	&--off-t-md {
+		--section-off-t: #{microbe-rem(30)};
+
+		@include microbe-media($screen-vw) {
+			--section-off-t: #{vw(50)};
+		}
+	}
+
+	&--off-t-lg {
+		--section-off-t: #{microbe-rem(60)};
+
+		@include microbe-media($screen-vw) {
+			--section-off-t: #{vw(100)};
+		}
+	}
+
+	&--off-b-sm {
+		--section-off-b: #{microbe-rem(20)};
+
+		@include microbe-media($screen-vw) {
+			--section-off-b: #{vw(30)};
+		}
+	}
+
+	&--off-b-md {
+		--section-off-b: #{microbe-rem(30)};
+
+		@include microbe-media($screen-vw) {
+			--section-off-b: #{vw(50)};
+		}
+	}
+
+	&--off-b-lg {
+		--section-off-b: #{microbe-rem(60)};
+
+		@include microbe-media($screen-vw) {
+			--section-off-b: #{vw(100)};
+		}
+	}
+}

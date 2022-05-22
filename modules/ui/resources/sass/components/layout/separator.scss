@@ -1,0 +1,61 @@
+.separator {
+	$this: &;
+
+	border: 0;
+	background-color: var(--color-faint-weak);
+
+	&--horizontal {
+		width: 100%;
+		height: 1px;
+		margin: var(--offset) 0;
+	}
+
+	&--vertical {
+		height: auto;
+		width: 1px;
+		margin: 0 var(--offset);
+	}
+
+	&--offset-xs {
+		--offset: #{microbe-rem(10)};
+
+		@include microbe-media($screen-vw) {
+			--offset: #{vw(10)};
+		}
+	}
+
+	&--offset-sm {
+		--offset: #{microbe-rem(15)};
+
+		@include microbe-media($screen-vw) {
+			--offset: #{vw(15)};
+		}
+	}
+
+	&--offset-md {
+		--offset: #{microbe-rem(20)};
+
+		@include microbe-media($screen-vw) {
+			--offset: #{vw(20)};
+		}
+	}
+
+	&--theme-gray {
+		background-color: var(--color-pantone-gray);
+	}
+
+	&--price {
+		margin: 0 microbe-rem(4);
+		height: 1px;
+		width: microbe-rem(13);
+
+		@include microbe-media($screen-vw) {
+			margin: 0 vw(4);
+			width: vw(13);
+		}
+	}
+
+	&--theme-faint-weak {
+		background-color: var(--color-faint-weak);
+	}
+}

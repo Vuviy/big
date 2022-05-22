@@ -1,0 +1,15 @@
+.text {
+	$this: &;
+
+	font-family: $font-family-default;
+	font-weight: $font-weight-regular;
+	color: currentColor;
+	margin: 0;
+	transition: color $duration-normal ease;
+	line-height: microbe-em(16, 12);
+	font-size: microbe-rem(12);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(14);
+	}
+}

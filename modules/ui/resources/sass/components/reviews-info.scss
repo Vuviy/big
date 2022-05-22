@@ -1,0 +1,34 @@
+.reviews-info {
+	$this: &;
+
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: var(--color-pantone-gray);
+	cursor: pointer;
+	transition: color $duration-fast ease;
+
+	@media (hover: hover) {
+		&:hover {
+			color: var(--color-black);
+		}
+
+		&:active {
+			color: var(--color-pantone-gray2);
+		}
+	}
+
+	&__icon {
+		width: microbe-rem(16);
+		height: microbe-rem(16);
+
+		@include microbe-media($screen-vw) {
+			width: vw(16);
+			height: vw(16);
+		}
+	}
+
+	span {
+		line-height: 0;
+	}
+}

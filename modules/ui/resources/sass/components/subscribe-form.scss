@@ -1,0 +1,50 @@
+.subscribe-form {
+	&__wrapper {
+		background-color: var(--color-white);
+		display: flex;
+		align-items: stretch;
+		overflow: hidden;
+		border-radius: microbe-rem(4);
+
+		input {
+			flex-grow: 1;
+			border: none;
+			background-color: transparent;
+			padding: 0 microbe-rem(18);
+			appearance: none;
+			outline: none;
+			width: 100%;
+
+			@include microbe-media($screen-vw) {
+				padding: 0 vw(18);
+			}
+
+			&::placeholder {
+				font-size: microbe-rem(15);
+				line-height: microbe-em(20, 15);
+				color: var(--color-pantone-gray);
+
+				@include microbe-media($screen-vw) {
+					font-size: vw(15);
+				}
+			}
+		}
+
+		button {
+			margin: 0;
+			outline: none;
+			flex-shrink: 0;
+			padding: 0 microbe-rem(20);
+			font-size: microbe-rem(16);
+
+			@include microbe-media($screen-vw) {
+				padding: 0 vw(20);
+				font-size: vw(16);
+			}
+		}
+
+		@include microbe-media($screen-vw) {
+			border-radius: vw(4);
+		}
+	}
+}

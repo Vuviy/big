@@ -1,0 +1,33 @@
+.cookie {
+	color: var(--color-white);
+	background: var(--color-black);
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: -1px;
+	transition: transform 0.3s ease-in-out;
+	z-index: 9998;
+
+	&.is-hidden {
+		transform: translateY(110%);
+	}
+
+	&__content {
+		font-size: microbe-rem(12);
+		line-height: 1;
+	}
+
+	&__button {
+		border-radius: 3px;
+		border: 1px solid;
+		color: var(--color-white);
+		font-size: microbe-rem(12);
+		padding: microbe-rem(11) microbe-rem(15) microbe-rem(10);
+		text-transform: uppercase;
+		width: 100%;
+
+		@include microbe-media($breakpoint-sm) {
+			width: auto;
+		}
+	}
+}

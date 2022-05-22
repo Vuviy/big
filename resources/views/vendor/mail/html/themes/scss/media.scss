@@ -1,0 +1,51 @@
+@import "_settings/variables";
+
+a.es-button,
+button.es-button {
+	&:hover {
+		background: $mail-color-2 !important;
+		border-color: $mail-color-2 !important;
+	}
+}
+
+a.es-button-2,
+button.es-button-2 {
+	&:hover {
+		background: $white !important;
+		border-color: $white !important;
+		color: $mail-color-1 !important;
+	}
+}
+
+.subcopy {
+	a {
+		&:hover {
+			color: $mail-color-1 !important;
+		}
+	}
+}
+
+.table-order,
+.table {
+	table {
+		td {
+			a {
+				&:hover {
+					color: $mail-color-1 !important;
+				}
+			}
+		}
+	}
+}
+
+.es-order-head,
+.es-menu,
+.es-footer-contacts {
+	a {
+		transition: color 150ms;
+
+		&:hover {
+			color: $mail-color-1 !important;
+		}
+	}
+}

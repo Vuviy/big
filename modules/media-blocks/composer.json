@@ -1,0 +1,21 @@
+{
+    "name": "wezom-cms/media-blocks",
+    "description": "Wezom laravel media-blocks module",
+    "type": "library",
+    "version": "8.1.0",
+    "require": {
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\MediaBlocks\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\MediaBlocks\\MediaBlocksServiceProvider"
+            ]
+        }
+    }
+}

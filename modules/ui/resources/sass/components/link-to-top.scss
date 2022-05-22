@@ -1,0 +1,27 @@
+.link-to-top {
+	background: rgba(var(--color-black-rgb), 0.5);
+	border-radius: 50%;
+	color: var(--color-white);
+	cursor: pointer;
+	transform-origin: right bottom;
+	transform: scale(0);
+	transition: transform 0.2s ease, background 0.2s ease;
+	height: microbe-rem(40);
+	width: microbe-rem(40);
+	z-index: 3;
+
+	svg {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&:hover {
+		background: var(--color-black);
+	}
+
+	&.is-show {
+		transform: scale(1);
+	}
+}

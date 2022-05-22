@@ -1,0 +1,69 @@
+@import 'settings/all-settings';
+@import 'tools/all-tools';
+
+.svg-sprite {
+	&__icon {
+		border: 1px dashed lightgray;
+		padding-top: 100%;
+		position: relative;
+	}
+
+	&__svg {
+		position: absolute;
+		top: 5%;
+		left: 5%;
+		width: 90%;
+		height: 90%;
+		fill: var(--color-black);
+		color: var(--color-pantone-gray);
+	}
+
+	&__name {
+		margin: 0.5em 0 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 100%;
+		text-align: center;
+	}
+}
+
+.ui-kit-block {
+	border-bottom: 1px dashed lightgrey;
+	padding-bottom: 40px;
+	margin-bottom: 40px;
+
+	&__title {
+		font-size: microbe-rem(20);
+		font-weight: $font-weight-medium;
+		line-height: microbe-em(25, 20);
+		border-left: 5px solid var(--color-black);
+		padding-left: 15px;
+		margin-bottom: 30px;
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(24);
+		}
+	}
+
+	&__content {
+		padding: 10px 20px;
+		border-radius: 10px;
+		border: 1px dashed lightgrey;
+	}
+
+	code {
+		background-color: rgba(var(--color-black-rgb), 0.02);
+		padding: 5px;
+		margin: 0 5px;
+	}
+}
+
+.color-block {
+	display: flex;
+	flex-direction: column;
+	align-items: safe center;
+	justify-content: center;
+	height: 5rem;
+	text-align: center;
+}

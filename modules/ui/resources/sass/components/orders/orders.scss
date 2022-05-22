@@ -1,0 +1,12 @@
+@import 'orders-item';
+@import 'orders-products';
+@import 'orders-info';
+@import 'orders-summary';
+@import 'order-history';
+
+.orders {
+	&__sub-title {
+		line-height: microbe-em(21, 15);
+		color: var(--color-black);
+	}
+}

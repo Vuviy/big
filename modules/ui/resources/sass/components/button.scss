@@ -1,0 +1,413 @@
+.button {
+	$this: &;
+
+	display: inline-flex;
+	justify-content: center;
+	align-items: safe center;
+	cursor: pointer;
+	pointer-events: all;
+	color: var(--control-font-color, var(--color-black));
+	background-color: var(--control-bg-color, transparent);
+	font-size: var(--font-size);
+	font-weight: var(--control-font-weight, #{$font-weight-medium});
+	width: var(--control-width, auto);
+	height: var(--control-height, auto);
+	padding: 0 var(--control-padding, 0);
+	border: var(--control-border-width, 1px) solid var(--control-border-color, transparent);
+	border-radius: var(--control-border-radius, 0);
+	letter-spacing: var(--letter-spacing, 0.05em);
+	transition: background $duration-fast ease, color $duration-fast ease, border-color $duration-fast ease, opacity $duration-fast ease, padding $duration-fast ease, border-radius $duration-fast ease;
+	position: relative;
+	text-decoration: none;
+
+	&__icon {
+		line-height: 0;
+
+		&--left {
+			margin-right: var(--control-spacing);
+		}
+
+		&--right {
+			margin-left: var(--control-spacing);
+		}
+	}
+
+	&[disabled], &.disabled {
+		opacity: 0.4;
+		cursor: default;
+		pointer-events: none;
+	}
+
+	&.is-loading {
+		#{$this}__icon {
+			svg {
+				animation: spin $duration-snail ease forwards;
+			}
+		}
+	}
+
+	&--theme-yellow {
+		--control-bg-color: var(--color-pantone-lemon);
+		--control-font-color: var(--color-black);
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-bg-color: var(--color-pantone-orange);
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				--control-bg-color: var(--color-pantone-gray);
+				--control-font-color: var(--color-white);
+			}
+		}
+
+		&:not(.disabled):not([disabled]):not(.is-active):active {
+			--control-bg-color: var(--color-pantone-orange);
+		}
+
+		&.is-active {
+			--control-bg-color: var(--color-pantone-orange);
+
+			@media (hover: hover) {
+				&:not(.disabled):not([disabled]):hover {
+					--control-bg-color: var(--color-pantone-lemon);
+					--control-font-color: var(--color-black);
+				}
+			}
+		}
+	}
+
+	&--theme-black {
+		--control-bg-color: var(--color-black);
+		--control-font-color: var(--color-white);
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):hover {
+				--control-bg-color: var(--color-pantone-orange);
+				--control-font-color: var(--color-black);
+			}
+
+			&:not(.disabled):not([disabled]):active {
+				--control-bg-color: var(--color-pantone-gray);
+				--control-font-color: var(--color-white);
+			}
+		}
+	}
+
+	&--theme-transparent {
+		--control-font-color: var(--color-pantone-gray);
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+				--control-font-color: var(--color-base-strong);
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.2);
+				--control-font-color: var(--color-black);
+			}
+		}
+
+		&:not(.disabled):not([disabled]):not(.is-active):active {
+			--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+			--control-font-color: var(--color-base-strong);
+		}
+
+		//&.is-active {
+		//	--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+		//	--control-font-color: var(--color-base-strong);
+		//
+		//	@media (hover: hover) {
+		//		&:not(.disabled):not([disabled]):hover {
+		//			--control-bg-color: transparent;
+		//			--control-font-color: var(--color-pantone-gray);
+		//		}
+		//	}
+		//}
+	}
+
+	&--theme-transparent-bordered {
+		--control-font-color: var(--color-black);
+		--control-border-color: var(--color-black);
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-bg-color: var(--color-black);
+				--control-font-color: var(--color-white);
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				--control-bg-color: var(--color-pantone-gray);
+				--control-border-color: var(--color-pantone-gray);
+				--control-font-color: var(--color-white);
+			}
+		}
+
+		&:not(.disabled):not([disabled]):not(.is-active):active {
+			--control-bg-color: var(--color-black);
+			--control-font-color: var(--color-white);
+		}
+
+		//&.is-active {
+		//	--control-bg-color: var(--color-black);
+		//	--control-font-color: var(--color-white);
+		//
+		//	@media (hover: hover) {
+		//		&:not(.disabled):not([disabled]):hover {
+		//			--control-bg-color: transparent;
+		//			--control-font-color: var(--color-black);
+		//		}
+		//	}
+		//}
+	}
+
+	&--theme-gray {
+		--control-bg-color: var(--color-faint-weak);
+		--control-font-color: var(--color-pantone-gray);
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-bg-color: var(--color-pantone-lemon);
+				--control-font-color: var(--color-black);
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				--control-bg-color: var(--color-pantone-orange);
+				--control-font-color: var(--color-black);
+			}
+		}
+
+		&:not(.disabled):not([disabled]):not(.is-active):active {
+			--control-bg-color: var(--color-pantone-lemon);
+			--control-font-color: var(--color-black);
+		}
+
+		//&.is-active {
+		//	--control-bg-color: var(--color-pantone-gray);
+		//	--control-font-color: var(--color-white);
+		//
+		//	@media (hover: hover) {
+		//		&:not(.disabled):not([disabled]):hover {
+		//			--control-bg-color: var(--color-faint-weak);
+		//			--control-font-color: var(--color-pantone-gray);
+		//		}
+		//	}
+		//}
+	}
+
+	&--theme-gray-mobile {
+		--control-bg-color: var(--color-faint-weak);
+		--control-font-color: var(--color-black);
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-bg-color: var(--color-pantone-lemon);
+				--control-font-color: var(--color-black);
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				--control-bg-color: var(--color-pantone-orange);
+				--control-font-color: var(--color-black);
+			}
+		}
+
+		&:not(.disabled):not([disabled]):not(.is-active):active {
+			--control-bg-color: var(--color-pantone-lemon);
+			--control-font-color: var(--color-black);
+		}
+	}
+
+	&--theme-outline-gray {
+		--control-font-color: var(--color-pantone-gray);
+		--control-border-color: var(--color-pantone-gray);
+
+		&.is-active {
+			--control-font-color: var(--color-black);
+			--control-border-color: var(--color-black);
+			--control-border-width: #{microbe-rem(2)};
+
+			opacity: 1;
+
+			@include microbe-media($screen-vw) {
+				--control-border-width: #{vw(2)};
+			}
+		}
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+				--control-font-color: var(--color-pantone-gray);
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.2);
+				--control-font-color: var(--color-black);
+			}
+		}
+
+		&:not(.disabled):not([disabled]):not(.is-active):active {
+			--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+			--control-font-color: var(--color-pantone-gray);
+		}
+	}
+
+	&--variation-color {
+		--control-border-color: var(--color-pantone-gray);
+
+		&.is-active {
+			--control-border-color: var(--color-black);
+			--control-border-width: #{microbe-rem(2)};
+
+			opacity: 1;
+
+			@include microbe-media($screen-vw) {
+				--control-border-width: #{vw(2)};
+			}
+		}
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-border-color: var(--color-black);
+
+				#{$this}__inner {
+					opacity: 0.8;
+				}
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				opacity: 0.8;
+			}
+		}
+
+		#{$this}__inner {
+			width: 82%;
+			height: 82%;
+			border-radius: 50%;
+			transition: width $duration-light linear, height $duration-light linear, opacity $duration-fast ease;
+		}
+	}
+
+	&--reset {
+		--control-font-color: var(--color-pantone-gray);
+		--control-border-color: var(--color-pantone-gray);
+
+		&.is-active {
+			--control-font-color: var(--color-black);
+			--control-border-color: var(--color-black);
+			--control-border-width: #{microbe-rem(2)};
+
+			opacity: 1;
+
+			@include microbe-media($screen-vw) {
+				--control-border-width: #{vw(2)};
+			}
+		}
+
+		@media (hover: hover) {
+			&:not(.disabled):not([disabled]):not(.is-active):hover {
+				--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+				--control-font-color: var(--color-pantone-gray);
+			}
+
+			&:not(.disabled):not([disabled]):not(.is-active):active {
+				--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.2);
+				--control-font-color: var(--color-black);
+			}
+		}
+
+		&:not(.disabled):not([disabled]):not(.is-active):active {
+			--control-bg-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+			--control-font-color: var(--color-pantone-gray);
+		}
+	}
+
+	&--toggle-password {
+		--control-padding: 0;
+		--control-bg-color: transparent;
+		--control-border-color: transparent;
+
+		width: microbe-rem(24);
+		height: microbe-rem(20);
+
+		@include microbe-media($screen-vw) {
+			width: vw(24);
+			height: vw(20);
+		}
+
+		#{$this}__icon {
+			width: microbe-rem(16);
+			height: microbe-rem(16);
+			--control-font-color: var(--color-black);
+
+			@include microbe-media($screen-vw) {
+				width: vw(16);
+				height: vw(16);
+			}
+		}
+
+		@media(hover: hover) {
+			&:hover {
+				--control-bg-color: var(--color-base-strong);
+				--control-font-color: var(--color-white);
+			}
+
+			&:active {
+				--control-bg-color: var(--color-black);
+				--control-font-color: var(--color-white);
+			}
+		}
+
+		&.is-active {
+			--control-bg-color: var(--color-black);
+			--control-font-color: var(--color-white);
+		}
+	}
+
+	&--action {
+		--control-width: #{microbe-rem(36)};
+		--control-height: #{microbe-rem(36)};
+
+		@include microbe-media($screen-vw) {
+			--control-width: #{vw(36)};
+			--control-height: #{vw(36)};
+		}
+
+		#{$this}__icon {
+			--icon-color: var(--color-black);
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				#{$this}__icon {
+					color: var(--color-pantone-gray2);
+				}
+			}
+
+			&:active {
+				#{$this}__icon {
+					color: var(--color-pantone-gray);
+				}
+			}
+		}
+	}
+
+	&--border-sm {
+		--control-border-width: #{microbe-rem(2)};
+
+		@include microbe-media($screen-vw) {
+			--control-border-width: #{vw(2)};
+		}
+	}
+
+	&--full-width {
+		width: 100%;
+	}
+}
+
+@keyframes spin {
+	from{}
+	to {
+		transform: rotate(360deg);
+	}
+}

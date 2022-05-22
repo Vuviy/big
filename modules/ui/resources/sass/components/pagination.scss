@@ -1,0 +1,70 @@
+.pagination {
+	$this: &;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: microbe-rem(20);
+
+	@include microbe-media($screen-vw) {
+		gap: vw(40);
+	}
+
+	&__btn {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: microbe-rem(46);
+		height: microbe-rem(46);
+		color: var(--color-pantone-gray);
+		text-decoration: none;
+		font-size: microbe-rem(18);
+		line-height: microbe-em(24, 18);
+		font-weight: $font-weight-bold;
+		transition: background-color $duration-fast ease;
+
+		@include microbe-media($screen-vw) {
+			width: vw(46);
+			height: vw(46);
+			font-size: vw(18);
+		}
+
+		&--arrow {
+			svg {
+				fill: currentColor;
+			}
+		}
+
+		&:not(#{$this}__btn--arrow) {
+			border-radius: 50%;
+
+			&.disabled {
+				cursor: default;
+				color: var(--color-black);
+			}
+
+			&:not(.disabled) {
+				@media (hover: hover) {
+					&:hover {
+						background-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+					}
+
+					&:active {
+						background-color: rgba(var(--color-pantone-gray-rgb), 0.25);
+					}
+				}
+			}
+		}
+	}
+
+	&__separator {
+		width: microbe-rem(3);
+		height: microbe-rem(3);
+		background-color: var(--color-pantone-gray);
+
+		@include microbe-media($screen-vw) {
+			width: vw(3);
+			height: vw(3);
+		}
+	}
+}

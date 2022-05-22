@@ -1,0 +1,109 @@
+.about-benefits {
+	background-color: var(--color-faint-weak);
+	padding: microbe-rem(40) 0;
+
+	@include microbe-media($breakpoint-md) {
+		padding: microbe-rem(60) 0;
+	}
+
+	@include microbe-media($screen-vw) {
+		padding: vw(290) 0 vw(140);
+	}
+
+	&__grid {
+		display: grid;
+		gap: microbe-rem(15);
+		grid-template-columns: minmax(0, 1fr);
+
+		@include microbe-media($breakpoint-sm) {
+			gap: microbe-rem(40);
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		@include microbe-media($breakpoint-df) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		@include microbe-media($screen-vw) {
+			gap: vw(75) vw(120);
+		}
+	}
+
+	&__title {
+		text-align: center;
+		line-height: microbe-em(72, 64);
+		color: var(--color-black);
+		font-size: microbe-rem(24);
+		margin-bottom: microbe-rem(40);
+
+		@include microbe-media($breakpoint-md) {
+			font-size: microbe-rem(48);
+			margin-bottom: microbe-rem(80);
+		}
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(64);
+			margin-bottom: vw(150);
+		}
+	}
+
+	&__item {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+
+		@include microbe-media($breakpoint-sm) {
+			justify-content: flex-start;
+		}
+
+		&-title {
+			line-height: microbe-em(40, 24);
+			color: var(--color-black);
+			font-size: microbe-rem(18);
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(24);
+			}
+
+			@include microbe-media($screen-vw) {
+				font-size: vw(24);
+			}
+		}
+
+		&-text {
+			font-size: microbe-rem(13);
+			line-height: microbe-em(20, 15);
+			color: var(--color-faint-strong);
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(15);
+			}
+
+			@include microbe-media($screen-vw) {
+				font-size: vw(15);
+			}
+		}
+
+		&-icon {
+			svg {
+				display: block;
+				object-fit: contain;
+				margin-right: microbe-rem(14);
+				width: microbe-rem(28);
+				height: microbe-rem(28);
+
+				@include microbe-media($breakpoint-md) {
+					width: microbe-rem(40);
+					height: microbe-rem(40);
+					margin-right: microbe-rem(24);
+				}
+
+				@include microbe-media($screen-vw) {
+					width: vw(40);
+					height: vw(40);
+					margin-right: vw(24);
+				}
+			}
+		}
+	}
+}

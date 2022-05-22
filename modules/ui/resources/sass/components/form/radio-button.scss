@@ -1,0 +1,91 @@
+.radio-button {
+    $this: &;
+
+    user-select: none;
+
+    &__label {
+        position: relative;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        &:active {
+            #{$this}__checkmark {
+                border-color: var(--color-pantone-gray);
+                background-color: var(--color-pantone-gray);
+            }
+        }
+    }
+
+    &__checkmark {
+        cursor: pointer;
+        position: relative;
+        display: block;
+        background-color: transparent;
+        border: 1px solid var(--color-pantone-gray);
+        width: microbe-rem(16);
+        height: microbe-rem(16);
+        border-radius: 50%;
+        transition: $duration-flash;
+        flex-shrink: 0;
+
+        @include microbe-media($screen-vw) {
+            width: vw(16);
+            height: vw(16);
+        }
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            content: '';
+            display: block;
+            width: microbe-rem(8);
+            height: microbe-rem(8);
+            border-radius: 50%;
+			background-color: transparent;
+            transition: $duration-flash;
+
+            @include microbe-media($screen-vw) {
+                width: vw(8);
+                height: vw(8);
+            }
+        }
+    }
+
+    &__control {
+        display: none;
+
+        &:checked {
+            + #{$this}__label {
+                #{$this}__checkmark {
+                    &::before {
+                        background-color: var(--color-base-strong);
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+
+				#{$this}__text {
+					color: var(--color-base-strong);
+				}
+            }
+        }
+
+		&[disabled] {
+			+ #{$this}__label {
+				cursor: default;
+
+				#{$this}__checkmark {
+					background-color: rgba(var(--color-pantone-gray2-rgb), 0.05);
+					border-color: rgba(var(--color-pantone-gray2-rgb), 0.2);
+				}
+
+				#{$this}__text {
+					color: rgba(var(--color-pantone-gray2-rgb), 0.2);
+				}
+			}
+		}
+    }
+}

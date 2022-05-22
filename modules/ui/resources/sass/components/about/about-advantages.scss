@@ -1,0 +1,129 @@
+.about-advantages {
+	background-color: var(--color-base-strong);
+	padding: microbe-rem(40) 0;
+
+	@include microbe-media($breakpoint-md) {
+		padding: microbe-rem(60) 0;
+	}
+
+	@include microbe-media($screen-vw) {
+		padding: vw(326) 0 vw(150);
+	}
+
+	&__grid {
+		display: grid;
+		gap: microbe-rem(25);
+		grid-template-columns: minmax(0, 1fr);
+
+		@include microbe-media($breakpoint-md) {
+			gap: microbe-rem(50);
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		@include microbe-media($screen-vw) {
+			gap: vw(136);
+		}
+	}
+
+	&__title {
+		text-align: center;
+		line-height: microbe-em(72, 64);
+		color: var(--color-white);
+		font-size: microbe-rem(24);
+		margin-bottom: microbe-rem(40);
+
+		@include microbe-media($breakpoint-md) {
+			font-size: microbe-rem(48);
+			margin-bottom: microbe-rem(80);
+		}
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(64);
+			margin-bottom: vw(150);
+		}
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+
+		@include microbe-media($breakpoint-sm) {
+			align-items: flex-start;
+			text-align: left;
+		}
+
+		&-title {
+			display: flex;
+			align-items: center;
+			line-height: microbe-em(32, 24);
+			color: var(--color-white);
+			font-size: microbe-rem(18);
+
+			@include microbe-media($breakpoint-sm) {
+				flex-direction: column;
+				align-items: baseline;
+			}
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(20);
+			}
+
+			@include microbe-media($screen-vw) {
+				font-size: vw(20);
+			}
+		}
+
+		&-text {
+			margin-top: microbe-rem(8);
+			line-height: microbe-em(20, 15);
+			color: var(--color-faint-weak);
+			font-size: microbe-rem(13);
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(15);
+			}
+
+			@include microbe-media($screen-vw) {
+				font-size: vw(15);
+			}
+
+			span {
+				margin-top: microbe-rem(8);
+
+				@include microbe-media($screen-vw) {
+					margin-top: vw(8);
+				}
+			}
+		}
+
+		&-icon {
+			svg {
+				fill: var(--color-white);
+				display: block;
+				object-fit: contain;
+				width: microbe-rem(22);
+				height: microbe-rem(22);
+				margin-right: microbe-rem(8);
+
+				@include microbe-media($breakpoint-sm) {
+					margin-bottom: microbe-rem(8);
+					margin-right: 0;
+				}
+
+				@include microbe-media($breakpoint-md) {
+					width: microbe-rem(30);
+					height: microbe-rem(30);
+					margin-bottom: microbe-rem(16);
+				}
+
+				@include microbe-media($screen-vw) {
+					width: vw(30);
+					height: vw(30);
+					margin-bottom: vw(16);
+				}
+			}
+		}
+	}
+}

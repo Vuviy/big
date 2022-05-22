@@ -1,0 +1,71 @@
+{
+    "name": "johannebert/laravel-spam-protector",
+    "type": "library",
+    "description": "Laravel Spam Protector class to check ip, name, email for spam that uses the StopForumSpam Api https://www.stopforumspam.com/usage",
+    "keywords": [
+        "johannebert",
+        "laravel-spam-protector",
+        "StopForumSpam",
+        "stop forum spam api",
+        "spam",
+        "protection",
+        "laravel"
+    ],
+    "homepage": "https://github.com/johannebert/laravel-spam-protector",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Johann-Mike Ebert",
+            "email": "johannmike.ebert@gmail.com",
+            "homepage": "https://github.com/johannebert",
+            "role": "Developer"
+        },
+        {
+            "name": "Ricardo Boss",
+            "email": "contact@ricardoboss.de",
+            "homepage": "https://ricardoboss.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^6.0|^7.0|^8.0",
+        "php": "^7.2",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.1",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JohannEbert\\LaravelSpamProtector\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JohannEbert\\LaravelSpamProtector\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "JohannEbert\\LaravelSpamProtector\\SpamProtectorServiceProvider"
+            ],
+            "aliases": {
+                "SpamProtector": "JohannEbert\\LaravelSpamProtector\\Facades\\SpamProtector"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

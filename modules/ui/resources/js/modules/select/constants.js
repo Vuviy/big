@@ -1,0 +1,1 @@
+export const MIN_COUNT_FOR_DISPLAY_SEARCH = 20;

@@ -1,0 +1,113 @@
+.arrow-button {
+	$this: &;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color $duration-fast, fill $duration-fast, color $duration-fast;
+	cursor: pointer;
+	width: microbe-rem(46);
+	height: microbe-rem(46);
+	border-radius: 50%;
+	overflow: hidden;
+
+	@include microbe-media($screen-vw) {
+		width: vw(46);
+		height: vw(46);
+	}
+
+	&.disabled {
+		cursor: default;
+	}
+
+	svg {
+		width: microbe-rem(12);
+		height: microbe-rem(12);
+
+		@include microbe-media($screen-vw) {
+			width: vw(16);
+			height: vw(16);
+		}
+	}
+
+	&--theme-default {
+		&:not(.disabled) {
+			background-color: var(--color-white);
+			color: var(--color-pantone-gray);
+			box-shadow: var(--shadow-default);
+
+			@media (hover: hover) {
+				&:hover {
+					background-color: var(--color-pantone-lemon);
+					color: var(--color-black);
+				}
+
+				&:active {
+					background-color: var(--color-faint-strong);
+					color: var(--color-black);
+				}
+			}
+
+			&:active {
+				background-color: var(--color-pantone-lemon);
+				color: var(--color-black);
+			}
+		}
+	}
+
+	&--theme-transparent {
+		&:not(.disabled) {
+			background-color: var(--color-white);
+			color: var(--color-pantone-gray);
+			box-shadow: var(--shadow-default);
+
+			@media (hover: hover) {
+				&:hover {
+					background-color: var(--color-pantone-lemon);
+					color: var(--color-black);
+				}
+
+				&:active {
+					background-color: var(--color-faint-strong);
+					color: var(--color-black);
+				}
+			}
+
+			&:active {
+				background-color: var(--color-pantone-lemon);
+				color: var(--color-black);
+			}
+		}
+
+		@include microbe-media($screen-vw) {
+			&:not(.disabled) {
+				@media (hover: hover) {
+					&:hover {
+						background-color: rgba(var(--color-pantone-gray-rgb), 0.1);
+						color: var(--color-black);
+					}
+
+					&:active {
+						background-color: var(--color-black);
+						color: var(--color-white);
+					}
+				}
+
+				&:active {
+					background-color: rgba(var(--color-pantone-gray-rgb), 0.1);
+					color: var(--color-black);
+				}
+			}
+		}
+	}
+
+	&--size-md {
+		width: microbe-rem(18);
+		height: microbe-rem(18);
+
+		@include microbe-media($screen-vw) {
+			width: vw(18);
+			height: vw(18);
+		}
+	}
+}

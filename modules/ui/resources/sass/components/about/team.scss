@@ -1,0 +1,303 @@
+.team {
+	position: relative;
+	$this: &;
+
+	@include microbe-media($screen-vw) {
+		margin-bottom: vw(-100);
+	}
+
+	&__wrapper {
+		&--mobile {
+			@include microbe-media($breakpoint-df) {
+				display: none;
+			}
+		}
+
+		&--desktop {
+			display: none;
+
+			@include microbe-media($breakpoint-df) {
+				display: block;
+			}
+		}
+	}
+
+	&__title {
+		position: relative;
+		z-index: 1;
+		font-weight: 700;
+		line-height: microbe-em(30, 24);
+		text-align: center;
+		font-size: microbe-rem(18);
+
+		@include microbe-media($breakpoint-md) {
+			font-size: microbe-rem(24);
+		}
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(24);
+		}
+	}
+
+	&__decor {
+		position: absolute;
+		bottom: microbe-rem(-250);
+		right: microbe-rem(40);
+		z-index: 0;
+		display: none;
+
+		@include microbe-media($screen-vw) {
+			display: block;
+			bottom: vw(-250);
+			right: vw(40);
+		}
+
+		img {
+			display: block;
+
+			@include microbe-media($screen-vw) {
+				width: vw(1024);
+			}
+		}
+	}
+
+	&__grid {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		gap: microbe-rem(20);
+		grid-template-columns: minmax(0, 1fr);
+
+		@include microbe-media($breakpoint-ms) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		@include microbe-media($breakpoint-df) {
+			grid-template-columns: repeat(3, minmax(0, auto));
+			gap: vw(20);
+		}
+
+		&--left {
+			justify-content: center;
+
+			@include microbe-media($screen-vw) {
+				justify-content: start;
+			}
+		}
+
+		&--right {
+			justify-content: center;
+
+			@include microbe-media($screen-vw) {
+				justify-content: end;
+			}
+		}
+
+		& + & {
+			margin-top: vw(20);
+		}
+	}
+
+	&__item {
+		position: relative;
+		background-color: var(--color-white);
+		width: 100%;
+		overflow: hidden;
+		box-shadow: var(--shadow-default);
+		border-radius: microbe-rem(10);
+		padding: microbe-rem(40);
+
+		@include microbe-media($breakpoint-md) {
+			padding: microbe-rem(60) microbe-rem(50);
+		}
+
+		@include microbe-media($breakpoint-df) {
+			max-width: vw(520);
+			min-width: vw(520);
+			border-radius: vw(10);
+			padding: vw(60) vw(50);
+		}
+
+		@include microbe-media($screen-vw) {
+			max-width: vw(415);
+			min-width: vw(415);
+		}
+
+		&:hover {
+			#{$this}__item-description {
+				opacity: 1;
+			}
+		}
+
+		&-grid {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			@include microbe-media($breakpoint-df) {
+				display: grid;
+				grid-template-columns: auto auto;
+				gap: vw(15);
+			}
+		}
+
+		&-decor {
+			display: block;
+			position: absolute;
+			z-index: 1;
+			top: microbe-rem(10);
+			left: microbe-rem(10);
+			width: microbe-rem(16);
+			height: microbe-rem(20);
+
+			@include microbe-media($breakpoint-md) {
+				top: microbe-rem(20);
+				left: microbe-rem(20);
+				width: microbe-rem(26);
+				height: microbe-rem(30);
+			}
+
+			@include microbe-media($breakpoint-df) {
+				top: vw(20);
+				left: vw(20);
+				width: vw(26);
+				height: vw(30);
+			}
+
+			svg {
+				fill: var(--color-pantone-lemon);
+			}
+		}
+
+		&-image-wrapper {
+			max-width: microbe-rem(60);
+			min-width: microbe-rem(60);
+			margin-left: microbe-rem(15);
+
+			@include microbe-media($breakpoint-md) {
+				max-width: microbe-rem(80);
+				min-width: microbe-rem(80);
+			}
+
+			@include microbe-media($breakpoint-df) {
+				max-width: vw(100);
+				min-width: vw(100);
+				margin: 0;
+			}
+		}
+
+		&-image {
+			position: relative;
+			width: 100%;
+			padding-top: 100%;
+			border-radius: 50%;
+			background-color: var(--color-black);
+			overflow: hidden;
+
+			img {
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&-title {
+			line-height: microbe-em(30, 24);
+			font-weight: 700;
+			color: var(--color-black);
+			font-size: microbe-rem(16);
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(18);
+			}
+
+			@include microbe-media($breakpoint-df) {
+				font-size: vw(24);
+			}
+		}
+
+		&-position {
+			line-height: microbe-em(20, 15);
+			color: var(--color-faint-strong);
+			font-size: microbe-rem(13);
+			margin-top: microbe-rem(10);
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(15);
+				margin-top: microbe-rem(20);
+			}
+
+			@include microbe-media($breakpoint-df) {
+				margin-top: vw(30);
+				font-size: vw(15);
+			}
+		}
+
+		&-description {
+			display: flex;
+			flex-direction: column;
+			z-index: 2;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: var(--color-faint-weak);
+			opacity: 0;
+			transition: opacity 0.3s;
+			padding: microbe-rem(40) microbe-rem(40) microbe-rem(20);
+
+			@include microbe-media($breakpoint-md) {
+				padding: microbe-rem(60) microbe-rem(50) microbe-rem(30);
+			}
+
+			@include microbe-media($breakpoint-df) {
+				padding: vw(60) vw(50) vw(30);
+			}
+
+			#{$this}__item-decor {
+				svg {
+					fill: var(--color-white);
+				}
+			}
+
+			#{$this}__item-position {
+				overflow-y: auto;
+				overflow-x: hidden;
+				scrollbar-width: thin;
+				scrollbar-color: var(--color-black) rgba(var(--color-black), 0.1);
+
+				&::-webkit-scrollbar {
+					width: 3px;
+
+					@include microbe-media($screen-vw) {
+						width: vw(3);
+					}
+				}
+
+				&::-webkit-scrollbar-track {
+					background: rgba(var(--color-black), .1);
+				}
+
+				&::-webkit-scrollbar-thumb {
+					background-color: var(--color-black);
+					cursor: pointer;
+
+					@media (hover: hover) {
+						&:hover {
+							background-color: var(--color-faint-strong);
+						}
+					}
+				}
+
+				p {
+					margin: 0;
+				}
+			}
+		}
+	}
+}

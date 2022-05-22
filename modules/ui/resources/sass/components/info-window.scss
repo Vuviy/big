@@ -1,0 +1,18 @@
+.gm-style-iw-d {
+	overflow: hidden !important;
+}
+
+.gm-style-iw {
+	max-width: microbe-rem(260) !important;
+	padding: microbe-rem(20) !important;
+	background-color: var(--color-black) !important;
+
+	@include microbe-media($screen-vw) {
+		padding: vw(20) !important;
+		max-width: vw(260) !important;
+	}
+}
+
+.gm-style-iw-t::after {
+	background: var(--color-black) !important;
+}

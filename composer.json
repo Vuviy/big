@@ -1,0 +1,91 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords":     [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require":     {
+        "php": "^7.3|^8.0",
+        "ext-json": "^7.4",
+        "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.40",
+        "laravel/helpers": "^1.4",
+        "laravel/telescope": "^4.6",
+        "laravel/tinker": "^2.5",
+        "wezom-agency/browserizr": "^3.0",
+        "wezom-agency/r2d2": "^1.8",
+        "wezom-cms/about": "^8.1",
+        "wezom-cms/benefits": "^8.1",
+        "wezom-cms/branches": "^8.1",
+        "wezom-cms/buy-one-click": "^8.1",
+        "wezom-cms/callbacks": "^8.1",
+        "wezom-cms/catalog": "^8.1",
+        "wezom-cms/contacts": "^8.1",
+        "wezom-cms/core": "^8.1",
+        "wezom-cms/credit": "^8.1",
+        "wezom-cms/faq": "^8.1",
+        "wezom-cms/favorites": "^8.1",
+        "wezom-cms/home": "^8.1",
+        "wezom-cms/localities": "^8.1",
+        "wezom-cms/media-blocks": "^8.1",
+        "wezom-cms/menu": "^8.1",
+        "wezom-cms/news": "^8.1",
+        "wezom-cms/newsletter": "^8.1",
+        "wezom-cms/orders": "^8.1",
+        "wezom-cms/our-team": "^8.1",
+        "wezom-cms/pages": "^8.1",
+        "wezom-cms/privacy-policy": "^8.1",
+        "wezom-cms/product-reviews": "^8.1",
+        "wezom-cms/seo": "^8.1",
+        "wezom-cms/sitemap": "^8.1",
+        "wezom-cms/slider": "^8.1",
+        "wezom-cms/ui": "^8.1",
+        "wezom-cms/users": "^8.1"
+    },
+    "require-dev":     {
+        "barryvdh/laravel-debugbar": "^3.6",
+        "barryvdh/laravel-ide-helper": "^2.10",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3",
+        "wezom-cms/cli": "^8.1"
+    },
+    "autoload": {"psr-4":     {
+        "App\\": "app/",
+        "Database\\Factories\\": "database/factories/",
+        "Database\\Seeders\\": "database/seeders/"
+    }},
+    "autoload-dev": {"psr-4": {"Tests\\": "tests/"}},
+    "scripts":     {
+        "post-autoload-dump":         [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan telescope:publish --ansi"
+        ],
+        "post-root-package-install": ["@php -r \"file_exists('.env') || copy('.env.example', '.env');\""],
+        "post-create-project-cmd": ["@php artisan key:generate --ansi"]
+    },
+    "extra": {"laravel": {"dont-discover": []}},
+    "config":     {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [    {
+        "type": "path",
+        "url": "./modules/*"
+    }]
+}

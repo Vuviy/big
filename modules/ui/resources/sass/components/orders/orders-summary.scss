@@ -1,0 +1,21 @@
+.orders-summary {
+	border: 1px solid var(--color-faint-weak);
+	padding: microbe-rem(10);
+	border-radius: microbe-rem(6);
+
+	@include microbe-media($breakpoint-md) {
+		padding: microbe-rem(20);
+		border-radius: microbe-rem(10);
+	}
+
+	@include microbe-media($screen-vw) {
+		padding: vw(20);
+		border-radius: vw(10);
+	}
+
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+}

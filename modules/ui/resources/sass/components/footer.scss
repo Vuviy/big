@@ -1,0 +1,109 @@
+.footer {
+	background-color: var(--color-faint-weak);
+
+	&__icon {
+		display: block;
+
+		&--mastercard {
+			width: microbe-rem(30);
+			height: microbe-rem(20);
+
+			@include microbe-media($screen-vw) {
+				width: vw(30);
+				height: vw(20);
+			}
+		}
+
+		&--visa {
+			width: microbe-rem(60);
+			height: microbe-rem(20);
+
+			@include microbe-media($screen-vw) {
+				width: vw(60);
+				height: vw(20);
+			}
+		}
+
+		&--paypal {
+			width: microbe-rem(75);
+			height: microbe-rem(20);
+
+			@include microbe-media($screen-vw) {
+				width: vw(75);
+				height: vw(20);
+			}
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+
+		@include microbe-media($screen-vw) {
+			grid-template-columns: minmax(0, 3.5fr) minmax(0, 6.5fr);
+		}
+	}
+
+	&__socials {
+		position: relative;
+		padding: microbe-rem(40) 0 microbe-rem(30);
+
+		@include microbe-media($breakpoint-md) {
+			padding: microbe-rem(40) 10%;
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: vw(75) vw(95) vw(60) 0;
+		}
+
+		&::before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 1px;
+			height: 100%;
+			background-color: var(--color-white);
+			pointer-events: none;
+
+			@include microbe-media($screen-vw) {
+				content: '';
+			}
+		}
+	}
+
+	&__menu {
+		padding: 0 0 microbe-rem(40);
+
+		@include microbe-media($breakpoint-md) {
+			padding: microbe-rem(40) 10%;
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: vw(75) 0 vw(60) vw(75);
+		}
+	}
+}
+
+.copyright {
+	font-size: microbe-rem(12);
+	line-height: microbe-em(16, 12);
+	color: var(--color-black);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(12);
+	}
+
+	&--adaptive {
+		@include microbe-media($breakpoint-md) {
+			display: none;
+		}
+	}
+
+	&--desktop {
+		display: none;
+
+		@include microbe-media($breakpoint-md) {
+			display: block;
+		}
+	}
+}

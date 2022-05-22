@@ -1,0 +1,77 @@
+.box {
+	$this: &;
+
+	&--features {
+		padding: microbe-rem(40) microbe-rem(20);
+
+		@include microbe-media($breakpoint-sm) {
+			padding: microbe-rem(80) 0;
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: vw(150) 0 vw(140);
+		}
+	}
+
+	&--rating {
+		background-color: var(--color-faint-weak);
+		padding: microbe-rem(30) microbe-rem(40);
+
+		@include microbe-media($screen-vw) {
+			padding: vw(30) vw(40);
+		}
+	}
+
+	&--review {
+		border: 1px solid var(--color-faint-weak);
+		padding: microbe-rem(20);
+		border-radius: microbe-rem($br-sm);
+
+		@include microbe-media($screen-vw) {
+			padding: vw(20);
+			border-radius: vw($br-sm);
+		}
+	}
+
+	&--review-child {
+		@extend .box--review;
+
+		background-color: var(--color-faint-weak);
+	}
+
+	&--inform {
+		background-color: var(--color-faint-weak);
+		padding: microbe-rem(25) microbe-rem(20);
+		border-radius: microbe-rem($br-sm);
+
+		@include microbe-media($screen-vw) {
+			padding: vw(20);
+			border-radius: vw($br-sm);
+		}
+	}
+
+	&--checkout {
+		border: 1px solid var(--color-faint-weak);
+		padding: microbe-rem(20);
+		border-radius: microbe-rem($br-md);
+
+		@include microbe-media($screen-vw) {
+			padding: vw(20);
+			border-radius: vw($br-md);
+		}
+	}
+
+	&--register {
+		padding: microbe-rem(30) microbe-rem(15) microbe-rem(20);
+		background-color: var(--color-pantone-lemon);
+		border-radius: microbe-rem($br-sm);
+
+		@include microbe-media($screen-vw) {
+			border-radius: vw($br-sm);
+		}
+	}
+
+	&--has-error {
+		border-color: var(--color-critic-strong);
+	}
+}

@@ -1,0 +1,9 @@
+body {
+	background: var(--color-white);
+	color: var(--color-black);
+	font-family: $font-family-default;
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	min-width: microbe-rem(320);
+	margin: 0;
+}

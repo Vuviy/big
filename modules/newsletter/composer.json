@@ -1,0 +1,32 @@
+{
+    "name": "wezom-cms/newsletter",
+    "description": "Wezom CMS newsletter module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "wezom-cms/core": "^8.1",
+        "webpatser/laravel-uuid": "^4.0"
+    },
+    "suggest": {
+        "wezom-cms/users": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Newsletter\\": "src/",
+            "WezomCms\\Newsletter\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Newsletter\\NewsletterServiceProvider"
+            ]
+        }
+    }
+}

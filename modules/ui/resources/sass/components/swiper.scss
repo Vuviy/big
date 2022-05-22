@@ -1,0 +1,51 @@
+// onload styles
+.swiper-container {
+	&:not(.swiper-container-initialized) {
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+
+		.swiper-wrapper {
+			display: flex;
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+
+		.swiper-slide {
+			flex-shrink: 0;
+		}
+	}
+}
+
+.swiper-slide {
+	height: auto;
+	touch-action: auto;
+	box-sizing: border-box;
+}
+
+.swiper-button-disabled {
+	display: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.swiper-pagination-bullet {
+	width: microbe-rem(10);
+	height: microbe-rem(10);
+	background-color: var(--color-white);
+
+	@include microbe-media($screen-vw) {
+		width: vw(10);
+		height: vw(10);
+	}
+
+	&-active {
+		width: microbe-rem(14);
+		height: microbe-rem(14);
+
+		@include microbe-media($screen-vw) {
+			width: vw(14);
+			height: vw(14);
+		}
+	}
+}

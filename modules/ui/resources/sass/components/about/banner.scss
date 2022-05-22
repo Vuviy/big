@@ -1,0 +1,98 @@
+.about-banner {
+	width: 100%;
+	position: relative;
+	padding: microbe-rem(30) 0;
+
+	@include microbe-media($breakpoint-md) {
+		padding: microbe-rem(60) 0;
+	}
+
+	@include microbe-media($screen-vw) {
+		padding: 39% 0 0;
+	}
+
+	.breadcrumbs {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 1;
+
+		&__link:not([href]) {
+			color: var(--color-white);
+			font-weight: 500;
+		}
+	}
+
+	&__decor {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: auto;
+		height: 100%;
+		z-index: 1;
+		transform: translateX(-50%);
+	}
+
+	&__content {
+		z-index: 2;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+		align-items: center;
+
+		@include microbe-media($screen-vw) {
+			padding-bottom: vw(100);
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		svg {
+			display: block;
+			width: 100%;
+			max-width: 80%;
+			margin-bottom: microbe-rem(30);
+
+			@include microbe-media($breakpoint-md) {
+				max-width: microbe-rem(560);
+				max-height: microbe-rem(150);
+			}
+
+			@include microbe-media($screen-vw) {
+				max-width: vw(560);
+				max-height: vw(150);
+				margin-bottom: vw(30);
+			}
+		}
+	}
+
+	&__text {
+		line-height: microbe-em(72, 64);
+		color: var(--color-white);
+		text-align: center;
+		font-size: microbe-rem(28);
+
+		@include microbe-media($breakpoint-md) {
+			font-size: microbe-rem(64);
+		}
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(64);
+		}
+	}
+
+	&__image {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}

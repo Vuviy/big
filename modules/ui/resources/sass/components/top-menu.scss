@@ -1,0 +1,54 @@
+.top-menu {
+	$this: &;
+
+	&__list {
+		display: flex;
+	}
+
+	&__link {
+		display: block;
+		position: relative;
+		color: var(--color-white);
+		text-decoration: none;
+		cursor: pointer;
+		transition: color $duration-flash ease-in, text-decoration $duration-flash ease-in;
+
+		@include microbe-media($screen-vw) {
+			padding: vw(9) vw(13);
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			height: 1px;
+			width: 0;
+			background-color: transparent;
+			transition: background-color $duration-flash ease, width $duration-flash ease;
+		}
+
+		@media (hover: hover) {
+			&:not(.is-active):hover {
+				color: var(--color-pantone-gray2);
+
+				&::after {
+					width: 100%;
+					background-color: currentColor;
+				}
+			}
+
+			&:not(.is-active):active {
+				color: var(--color-pantone-gray);
+			}
+		}
+
+		&.is-active {
+			cursor: default;
+			color: var(--color-pantone-gray);
+
+			&::after {
+				width: 100%;
+				background-color: currentColor;
+			}
+		}
+	}
+}

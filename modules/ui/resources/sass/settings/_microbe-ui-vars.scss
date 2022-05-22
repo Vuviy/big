@@ -1,0 +1,41 @@
+@import 'webpack';
+@import 'breakpoints';
+@import 'spaces';
+
+// Legacy
+$microbe-ie-fallback: $ENV == 'legacy';
+
+// Размернось сетки
+$microbe-module-grid-cols: 12 !default;
+$microbe-module-cell-span: 12 !default;
+
+// Имена CSS переменных
+$microbe-module-cell-width-custom-property-name: --m-mcw;
+$microbe-spacer-size-custom-property-name: --m-ss;
+$microbe-owl-size-custom-property-name: --m-os;
+
+// Размерные модули отступов
+// Для игнора используйете значение NULL
+$microbe-space-xxs: NULL;
+$microbe-space-xs: $space-xs;
+$microbe-space-sm: $space-sm;
+$microbe-space-md: $space-md;
+$microbe-space-df: $space-df;
+$microbe-space-lg: $space-lg;
+$microbe-space-xl: $space-xl;
+$microbe-space-xxl: $space-xxl;
+$microbe-space-hg: NULL;
+
+// Брейкпоинты
+// Для игнора используйете значение NULL
+$microbe-breakpoint-xxs: $breakpoint-xxs;
+$microbe-breakpoint-xs: $breakpoint-xs;
+$microbe-breakpoint-sm: $breakpoint-sm;
+$microbe-breakpoint-md: $breakpoint-md;
+$microbe-breakpoint-df: $breakpoint-df;
+$microbe-breakpoint-lg: $breakpoint-lg;
+$microbe-breakpoint-xl: NULL;
+$microbe-breakpoint-xxl: NULL;
+$microbe-breakpoint-hd: NULL;
+
+@import '~microbe-ui/src/core/defaults';

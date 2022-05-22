@@ -1,0 +1,34 @@
+.specs {
+	$this: &;
+
+	&__item {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: microbe-rem(20);
+		padding: microbe-rem(20) 0;
+		border-bottom: 1px solid var(--color-faint-weak);
+
+		@include microbe-media($screen-vw) {
+			padding: vw(20) 0;
+			gap: vw(20);
+		}
+
+		&:first-child {
+			border-top: 1px solid var(--color-faint-weak);
+		}
+	}
+
+	&__cell {
+		&--left {
+			flex: 0 0 40%;
+
+			@include microbe-media($screen-vw) {
+				flex: 0 0 vw(420);
+			}
+		}
+
+		&--right {
+			flex: 1 0 0;
+		}
+	}
+}

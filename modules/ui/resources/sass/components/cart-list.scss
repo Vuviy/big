@@ -1,0 +1,93 @@
+.cart-list {
+	$this: &;
+
+	&__item {
+		display: grid;
+		gap: microbe-rem(15);
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: 2fr;
+		padding: microbe-rem(20) 0;
+		border-bottom: 1px solid var(--color-faint-weak);
+
+		@include microbe-media($breakpoint-md) {
+			gap: microbe-rem(20);
+			grid-template-columns: microbe-rem(36) microbe-rem(72) minmax(#{microbe-rem(200)}, #{microbe-rem(450)}) microbe-rem(150) minmax(#{microbe-rem(120)}, auto);
+		}
+
+		@include microbe-media($screen-vw) {
+			gap: vw(20);
+			display: grid;
+			grid-template-columns: vw(36) vw(72) vw(415) vw(153) auto;
+			padding: vw(20) 0;
+		}
+
+		&:first-child {
+			border-top: 1px solid var(--color-faint-weak);
+		}
+
+		& > div {
+			&:nth-child(1) {
+				@include microbe-media($breakpoint-md, max) {
+					grid-area: 1 / 1 / 2 / 2;
+				}
+			}
+
+			&:nth-child(2) {
+				@include microbe-media($breakpoint-md, max) {
+					grid-area: 1 / 2 / 2 / 5;
+				}
+			}
+
+			&:nth-child(3) {
+				@include microbe-media($breakpoint-md, max) {
+					grid-area: 1 / 5 / 2 / -1;
+				}
+			}
+
+			&:nth-child(4) {
+				@include microbe-media($breakpoint-md, max) {
+					grid-area: 2 / 1 / -1 / 4;
+				}
+
+				@include microbe-media($breakpoint-sm, max) {
+					grid-area: 2 / 1 / -1 / 5;
+				}
+
+				@include microbe-media($breakpoint-xs, max) {
+					grid-area: 2 / 1 / -1 / 6;
+				}
+			}
+
+			&:nth-child(5) {
+				@include microbe-media($breakpoint-md, max) {
+					grid-area: 2 / 4 / -1 / -1;
+				}
+
+				@include microbe-media($breakpoint-sm, max) {
+					grid-area: 2 / 5 / -1 / -1;
+				}
+
+				@include microbe-media($breakpoint-xs, max) {
+					grid-area: 2 / 6 / -1 / -1;
+				}
+			}
+		}
+	}
+
+	&__item-image {
+		display: block;
+		width: microbe-rem(72);
+		height: microbe-rem(97);
+
+		@include microbe-media($screen-vw) {
+			width: vw(72);
+			height: vw(97);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+}

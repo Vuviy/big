@@ -1,0 +1,432 @@
+@import "_settings/variables";
+@import "_settings/base";
+@import "_settings/helpers";
+@import "_items/button";
+
+/* Wrapper */
+.es-wrapper {
+	padding: 0;
+	Margin: 0;
+}
+
+.es-wrapper {
+	width: 100%;
+	height: 100%;
+	min-width: 600px;
+}
+
+.es-wrapper-color {
+	background-color: $mail-bgcolor-1;
+}
+
+/* Menu */
+.es-menu {
+	td {
+		border: 0;
+		border-left: 2px solid $mail-color-2;
+
+		&:first-child {
+			border-left: none;
+		}
+
+		a {
+			text-decoration: none;
+			display: block;
+			color: $mail-bgcolor-4;
+			font-weight: bold;
+			font-size: 14px;
+		}
+	}
+}
+
+.es-head {
+	table {
+		td {
+			p {
+				color: $white;
+				line-height: 120%;
+			}
+		}
+	}
+}
+
+/* Content */
+.es-content {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.es-content-header {
+	p {
+		color: $mail-color-6;
+		font-size: 16px;
+	}
+}
+
+.es-content-body {
+	background-color: $white;
+}
+
+.es-content-body {
+	p,
+	ul li,
+	ol li {
+		color: $mail-color-6;
+	}
+
+	td {
+		a {
+			font-size: inherit;
+			text-decoration: none;
+		}
+	}
+}
+
+/* Footer */
+.es-footer-body {
+	background-color: $white;
+
+	p,
+	ul li,
+	ol li {
+		color: $mail-color-6;
+		font-size: 14px;
+	}
+
+	a {
+		color: $white;
+		font-size: 14px;
+	}
+}
+
+.es-footer-develop {
+	background: $mail-bgcolor-3;
+
+	p {
+		color: #cccccc;
+		font-size: 12px;
+	}
+}
+
+.es-footer-phone {
+	color: $white;
+	font-size: 16px;
+	padding-bottom: 5px;
+}
+
+.es-footer-shop-title {
+	font-size: 12px;
+	color: $white;
+	padding-bottom: 5px;
+}
+
+.es-footer-schedule {
+	font-size: 12px;
+	color: $white;
+	line-height: 1.7;
+}
+
+.es-footer-links {
+	p {
+		color: $white;
+		line-height: 150%;
+	}
+
+	a {
+		font-size: 16px;
+		line-height: 24px;
+		color: $white;
+		word-break: break-word;
+
+		&[href*='tel'] {
+			white-space: nowrap;
+		}
+	}
+
+	strong {
+		a {
+			font-size: 14px;
+			line-height: 150%;
+			font-weight: bold;
+			text-decoration: none;
+		}
+	}
+}
+
+/* Subcopy */
+.subcopy {
+	p {
+		font-size: 14px;
+		color: $mail-color-5;
+	}
+
+	a {
+		font-size: 14px;
+		color: $mail-color-3;
+		max-width: 100%;
+		word-break: break-all;
+	}
+}
+
+/* Tables */
+.table {
+	@extend .es-p20;
+
+	table {
+		-premailer-cellpadding: 0;
+		-premailer-cellspacing: 0;
+		-premailer-width: 100%;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	th,
+	td {
+		margin: 0;
+		line-height: 32px;
+		font-size: 16px;
+		color: $black;
+
+		&:first-child {
+			padding-right: 10px;
+			padding-left: 0;
+			width: 50%;
+			max-width: 50%;
+		}
+
+		&:last-child {
+			padding-right: 0;
+			padding-left: 10px;
+			width: 50%;
+			max-width: 50%;
+		}
+
+		&:first-child:last-child {
+			width: 100%;
+			padding-right: 10px;
+			padding-left: 10px;
+		}
+
+		a {
+			color: $black;
+			word-break: break-word;
+		}
+	}
+
+	th {
+		strong {
+			color: $mail-color-4;
+		}
+	}
+
+	td {
+		@extend .es-p5b;
+
+		strong {
+			> a {
+				color: $mail-color-3;
+				font-weight: 400;
+			}
+		}
+	}
+}
+
+.table-order {
+	max-width: 560px;
+	width: 100%;
+	overflow: hidden;
+
+	table {
+		max-width: 560px;
+		width: 100%;
+	}
+
+	th {
+		font-size: 14px;
+		line-height: 21px;
+		color: $mail-color-5;
+		font-weight: normal;
+	}
+
+	th,
+	td {
+		font-size: 15px;
+		line-height: 23px;
+		padding-right: 5px;
+		color: $mail-color-6;
+
+		&:not([align]) {
+			text-align: left;
+		}
+
+		a {
+			color: $mail-color-6;
+		}
+
+		strong {
+			font-size: 16px;
+		}
+
+		p {
+			color: $mail-color-6;
+			display: block;
+			font-size: 15px;
+			line-height: 150%;
+			text-decoration: none;
+
+			strong {
+				font-size: 14px;
+				color: $mail-color-5;
+				font-weight: normal;
+			}
+		}
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+	td {
+		padding: 20px 5px 20px 0;
+
+		img {
+			display: block;
+			max-width: 90px;
+		}
+
+		&:first-child {
+			width: 100px;
+		}
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+	&__text {
+		p {
+			font-size: 16px;
+			color: #515050;
+		}
+	}
+}
+
+.es-m-txt-c {
+	h3 {
+		color: $mail-color-2;
+		font-size: 18px;
+	}
+}
+
+.es-order-head {
+	h1 {
+		font-size: 22px;
+		line-height: 22px;
+	}
+
+	a {
+		color: $mail-color-6;
+	}
+
+	&__line {
+		border-bottom: 1px solid $mail-color-7;
+		background: none;
+		height: 1px;
+		width: 100%;
+		margin: 0px;
+	}
+
+	&__content {
+		> p {
+			display: block;
+
+			&:last-child {
+				line-height: 24px;
+				font-size: 14px;
+				float: none;
+			}
+		}
+	}
+
+	&__table {
+		table {
+			width: 100%;
+
+			td {
+				font-size: 14px;
+				line-height: 14px;
+				padding-bottom: 0;
+				vertical-align: bottom;
+				color: $black;
+
+				strong {
+					font-size: 28px;
+					line-height: 28px;
+					color: $black;
+				}
+			}
+		}
+	}
+}
+
+.es-order-user-link {
+	p {
+		font-size: 15px;
+	}
+
+	a {
+		font-size: 15px;
+		color: $mail-color-2;
+		text-decoration: underline !important;
+	}
+}
+
+.es-total-price {
+	span {
+		color: $mail-color-6;
+		line-height: 22px;
+		font-size: 22px;
+	}
+
+	strong {
+		span {
+			color: $mail-color-6;
+			font-size: 28px;
+			font-weight: normal;
+		}
+	}
+}
+
+.es-payment {
+	p {
+		line-height: 21px;
+		font-size: 14px;
+	}
+}
+
+/* Panels */
+.panel {
+	border-left: $mail-color-1 solid 4px;
+	border-right: $mail-color-1 solid 4px;
+}
+
+.panel-content {
+	background-color: #f9f9f9;
+	color: #718096;
+	padding: 16px;
+
+	p {
+		color: #718096;
+	}
+}
+
+.panel-item {
+	padding: 0;
+
+	p {
+		&:last-of-type {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	}
+}

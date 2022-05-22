@@ -1,0 +1,26 @@
+.label {
+	justify-self: start;
+	$this: &;
+
+	padding: microbe-rem(2) microbe-rem(10);
+
+	@include microbe-media($screen-vw) {
+		padding: vw(2) vw(10);
+	}
+
+	&__text {
+		color: var(--color-white);
+	}
+
+	&--popular {
+		background-color: var(--color-popular);
+	}
+
+	&--novelty {
+		background-color: var(--color-novelty);
+	}
+
+	&--sale {
+		background-color: var(--color-sale);
+	}
+}

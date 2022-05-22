@@ -1,0 +1,28 @@
+{
+    "name": "wezom-cms/seo",
+    "description": "Wezom CMS seo module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "maatwebsite/excel": "^3.1",
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Seo\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Seo\\SeoServiceProvider"
+            ]
+        }
+    }
+}

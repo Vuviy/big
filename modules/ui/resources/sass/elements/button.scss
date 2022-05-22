@@ -1,0 +1,14 @@
+@import 'settings/all-settings';
+@import 'tools/all-tools';
+
+button {
+	cursor: pointer;
+	background: none;
+	padding: 0;
+	border: 0;
+	font-family: $font-family-default;
+
+	&:focus:not(:focus-visible) {
+		outline: none;
+	}
+}

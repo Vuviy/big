@@ -1,0 +1,66 @@
+@import 'settings/all-settings';
+@import 'tools/all-tools';
+
+.noscript-msg {
+	$this: &;
+
+	backface-visibility: hidden;
+	bottom: 0;
+	font-size: 13px;
+	line-height: 1.2em;
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: 9999;
+
+	&__input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+
+		&:checked + #{$this}__box {
+			display: none;
+		}
+	}
+
+	&__box {
+		@include clearfix();
+
+		padding: 0.75em 1.5em;
+		background-color: #f7fc9c;
+		border-top: 3px solid #f7b38b;
+	}
+
+	&__close {
+		cursor: pointer;
+		display: block;
+		float: right;
+		font-size: 3em;
+		height: 1em;
+		line-height: 0.8em;
+		margin-left: 0.5em;
+		text-align: center;
+		width: 1em;
+
+		&:hover {
+			background-color: rgba(var(--color-black-rgb), 0.075);
+		}
+
+		&:active {
+			background-color: rgba(var(--color-black-rgb), 0.15);
+		}
+	}
+
+	&__content {
+		overflow: hidden;
+
+		> :first-child {
+			margin-top: 0;
+		}
+
+		p {
+			margin: 0.5em 0;
+		}
+	}
+}

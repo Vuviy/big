@@ -1,0 +1,29 @@
+.mm-ocd {
+	top: microbe-rem($header-mobile-height);
+
+	&__content {
+		background: initial;
+	}
+}
+
+.mm-spn.mm-spn--light {
+	background: var(--color-white);
+}
+
+.mm-spn.mm-spn--navbar:after {
+	height: microbe-rem($header-mobile-height);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	opacity: 1;
+	font-weight: $font-weight-medium;
+}
+
+.mm-spn.mm-spn--navbar:before {
+	top: calc( #{microbe-rem($header-mobile-height)} / 2);
+}
+
+.mm-spn.mm-spn--navbar ul {
+	top: microbe-rem($header-mobile-height);
+}

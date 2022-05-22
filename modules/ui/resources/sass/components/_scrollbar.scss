@@ -1,0 +1,26 @@
+.scrollbar {
+	padding-right: 10px;
+
+	@include microbe-media($screen-vw) {
+		&::-webkit-scrollbar-track {
+			background: var(--color-faint-weak);
+			border-radius: vw(3);
+		}
+	}
+
+	@include microbe-media($screen-vw) {
+		&::-webkit-scrollbar {
+			background-color: transparent;
+			width: vw(4);
+			height: vw(4);
+		}
+	}
+
+	/* Handle */
+	@include microbe-media($screen-vw) {
+		&::-webkit-scrollbar-thumb {
+			background: var(--color-pantone-lemon);
+			border-radius: vw(3);
+		}
+	}
+}

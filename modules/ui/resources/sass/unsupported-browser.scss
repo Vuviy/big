@@ -1,0 +1,49 @@
+@import 'settings/all-settings';
+@import 'tools/all-tools';
+
+.unsupported-browsers {
+	background-color: #fcea9c;
+	border-top: 1px solid #d0d0d0;
+	bottom: 0;
+	color: #000;
+	text-align: center;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 18px;
+	line-height: 20px;
+	left: 0;
+	padding: 8px 10px 0;
+	position: fixed;
+	width: 100%;
+	z-index: 9999;
+
+	[hidden] {
+		display: none;
+	}
+}
+
+.unsupported-browsers-message {
+	margin: 0 0 7px;
+}
+
+.unsupported-browsers-buttons {
+	a {
+		color: #fff;
+		cursor: pointer;
+		border-radius: 4px;
+		display: inline-block;
+		text-decoration: none;
+		padding: 8px 10px;
+		font-weight: normal;
+		background: #5ab400;
+		white-space: nowrap;
+		margin: 0 2px 8px;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+.unsupported-message-button-close {
+	background: #dc952b;
+}

@@ -1,0 +1,32 @@
+{
+    "name": "wezom-cms/buy-one-click",
+    "description": "Wezom CMS buy-one-click module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "wezom-cms/core": "^8.1",
+        "wezom-cms/catalog": "^8.1"
+    },
+    "suggest": {
+        "wezom-cms/users": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\BuyOneClick\\": "src/",
+            "WezomCms\\BuyOneClick\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\BuyOneClick\\BuyOneClickServiceProvider"
+            ]
+        }
+    }
+}

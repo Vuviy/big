@@ -1,0 +1,16 @@
+// @param {Bool} $max-height - add max-height 100%
+// @param {Bool} $max-width - add max-width 100%
+@mixin absolute-centering($max-height: true, $max-width: false) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+	@if ($max-height) {
+		max-height: 100%;
+	}
+	@if ($max-width) {
+		max-width: 100%;
+	}
+}

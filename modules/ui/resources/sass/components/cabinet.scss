@@ -1,0 +1,47 @@
+.cabinet {
+	&__grid {
+		@include microbe-media($breakpoint-df) {
+			display: grid;
+			grid-template-columns: minmax(0, 6fr) minmax(0, 23.5fr);
+		}
+	}
+
+	&__sidebar {
+		position: relative;
+		display: none;
+
+		@include microbe-media($breakpoint-md) {
+			padding: microbe-rem(40) microbe-rem(20) microbe-rem(40) 0;
+		}
+
+		@include microbe-media($breakpoint-df) {
+			display: block;
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: vw(100) vw(20) vw(100) 0;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 1px;
+			height: 100%;
+			background-color: var(--color-faint-weak);
+		}
+	}
+
+	&__body {
+		padding: microbe-rem(20) 0;
+
+		@include microbe-media($breakpoint-md) {
+			padding: microbe-rem(40) 0 microbe-rem(40) microbe-rem(20);
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: vw(100) 0 vw(100) vw(125);
+		}
+	}
+}

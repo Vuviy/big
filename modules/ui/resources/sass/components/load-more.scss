@@ -1,0 +1,37 @@
+.load-more {
+	$this: &;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+
+	@media(hover: hover) {
+		&:hover {
+			#{$this}__icon {
+				transform: rotate(360deg);
+				transition: transform $duration-fast;
+			}
+		}
+	}
+
+	&__icon {
+		padding: microbe-rem(14);
+		border-radius: 50%;
+		border: 1px solid var(--color-faint-weak);
+
+		svg {
+			fill: var(--color-pantone-gray);
+			display: block;
+			width: microbe-rem(23);
+			height: microbe-rem(23);
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: vw(14);
+
+			svg {
+				width: vw(23);
+				height: vw(23);
+			}
+		}
+	}
+}

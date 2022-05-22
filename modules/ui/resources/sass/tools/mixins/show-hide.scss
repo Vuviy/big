@@ -1,0 +1,34 @@
+////
+/// @group _settings/
+////
+
+/// Хелперы видимости элементов
+/// @requires {mixin} media
+/// @param {Map} $screens [()] - карта брейкпоинтов, для которых нужно сделать хелперы
+
+// stylelint-disable declaration-no-important, max-nesting-depth
+@mixin helpers-show-hide($screens: ()) {
+	%hide {
+		display: none !important;
+	}
+
+	._hide {
+		@extend %hide;
+	}
+
+	@each $screen, $width in $screens {
+		$mod: $screen + '\\:';
+
+		@include microbe-media($width) {
+			._#{$mod}hide {
+				display: none !important;
+			}
+		}
+
+		@include microbe-media($width, max) {
+			._#{$mod}show {
+				display: none !important;
+			}
+		}
+	}
+}

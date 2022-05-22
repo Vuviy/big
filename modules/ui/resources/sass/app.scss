@@ -1,0 +1,9 @@
+// @see https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
+
+@import 'settings/all-settings';
+@import 'tools/all-tools';
+@import 'generic/all-generic';
+@import 'elements/all-elements';
+@import 'objects/all-objects';
+@import 'components/all-components';
+@import 'utilities/all-utilities';

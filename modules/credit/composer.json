@@ -1,0 +1,25 @@
+{
+    "name": "wezom-cms/credit",
+    "description": "Wezom CMS credit module",
+    "type": "library",
+    "version": "8.1.0",
+    "require": {
+        "wezom-cms/core": "^8.1",
+        "wezom-cms/catalog": "^8.1",
+        "wezom-cms/orders": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Credit\\": "src/",
+            "WezomCms\\Credit\\Database\\Factories\\": "database/factories",
+            "WezomCms\\Credit\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Credit\\CreditServiceProvider"
+            ]
+        }
+    }
+}

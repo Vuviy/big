@@ -1,0 +1,21 @@
+{
+    "name": "wezom-cms/localities",
+    "description": "Wezom CMS localities module",
+    "type": "library",
+    "version": "8.1.0",
+    "require": {
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Localities\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Localities\\LocalitiesServiceProvider"
+            ]
+        }
+    }
+}

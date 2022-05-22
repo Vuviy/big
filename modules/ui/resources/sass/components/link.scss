@@ -1,0 +1,144 @@
+.link {
+	$this: &;
+
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	transition: color $duration-fast ease;
+
+	&__icon {
+		line-height: 0;
+
+		svg {
+			width: 100%;
+			height: 100%;
+			fill: currentColor;
+		}
+	}
+
+	&__counter {
+		border-radius: microbe-rem($br-sm);
+		padding: microbe-rem(1) microbe-rem(5);
+		background-color: var(--color-pantone-lemon);
+	}
+
+	&--no-decoration {
+		text-decoration: none;
+	}
+
+	&--with-decoration {
+		text-decoration: underline;
+	}
+
+	&--theme-gray {
+		color: var(--color-pantone-gray);
+
+		@media (hover: hover) {
+			&:hover {
+				color: var(--color-pantone-gray2);
+			}
+
+			&:active {
+				color: var(--color-black);
+			}
+		}
+	}
+
+	&--theme-base-strong {
+		color: var(--color-base-strong);
+
+		@media (hover: hover) {
+			&:hover {
+				color: var(--color-pantone-gray);
+			}
+
+			&:active {
+				color: var(--color-black);
+			}
+		}
+	}
+
+	&--theme-yellow {
+		@media (hover: hover) {
+			&:hover {
+				color: var(--color-pantone-lemon);
+			}
+
+			&:active {
+				color: var(--color-pantone-orange);
+			}
+		}
+	}
+
+	&--theme-black {
+		color: var(--color-black);
+
+		@media (hover: hover) {
+			&:hover {
+				color: var(--color-pantone-gray);
+			}
+
+			&:active {
+				color: var(--color-pantone-orange);
+			}
+		}
+	}
+
+
+	&--theme-white {
+		color: var(--color-white);
+
+		@media (hover: hover) {
+			&:hover {
+				color: var(--color-pantone-gray);
+			}
+
+			&:active {
+				color: var(--color-pantone-orange);
+			}
+		}
+	}
+
+	&--all-results {
+		letter-spacing: 0.05em;
+
+		#{$this}__text {
+			font-weight: $font-weight-medium;
+		}
+
+		#{$this}__icon {
+			margin: 0 microbe-rem(4);
+			width: microbe-rem(11);
+			height: microbe-rem(11);
+
+			@include microbe-media($screen-vw) {
+				margin: 0 vw(4);
+				width: vw(13);
+				height: vw(13);
+			}
+		}
+
+		@include microbe-media($breakpoint-md, max) {
+			height: microbe-rem(40);
+			border-radius: microbe-rem($br-sm);
+
+			#{$this}__text {
+				font-size: microbe-rem(16);
+			}
+		}
+	}
+
+	&--mobile-bg-white {
+		@include microbe-media($breakpoint-md, max) {
+			color: var(--color-black);
+			background-color: var(--color-white);
+		}
+	}
+
+	&--mobile-bg-faint-weak {
+		@include microbe-media($breakpoint-md, max) {
+			color: var(--color-black);
+			background-color: var(--color-faint-weak);
+		}
+	}
+}

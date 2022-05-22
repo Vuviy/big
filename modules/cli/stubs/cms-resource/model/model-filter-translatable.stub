@@ -1,0 +1,42 @@
+<?php
+
+namespace DummyNamespace;
+
+use EloquentFilter\ModelFilter;
+use WezomCms\Core\Contracts\Filter\FilterListFieldsInterface;
+use WezomCms\Core\Filter\FilterField;
+use NamespacedDummyModel;
+
+/**
+ * @mixin DummyModel
+ */
+class DummyClass extends ModelFilter implements FilterListFieldsInterface
+{
+    /**
+     * Generate array with fields
+     * @return iterable|FilterField[]
+     */
+    public function getFields(): iterable
+    {
+        return [
+            FilterField::makeName(),
+            FilterField::published(),
+        ];
+    }
+
+    /**
+     * @var  int  $published
+     */
+    public function published($published)
+    {
+        $this->where('published', $published);
+    }
+
+    /**
+     * @var  string  $name
+     */
+    public function name($name)
+    {
+        $this->related('translations', 'name', 'LIKE', "%{$name}%");
+    }
+}

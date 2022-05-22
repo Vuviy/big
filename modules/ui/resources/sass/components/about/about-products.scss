@@ -1,0 +1,108 @@
+.about-products {
+	overflow: hidden;
+	position: relative;
+	padding-bottom: microbe-rem(40);
+
+	@include microbe-media($screen-vw) {
+		padding-bottom: 0;
+		margin-bottom: vw(-190);
+	}
+
+	&__grid {
+		display: grid;
+		gap: microbe-rem(20);
+		grid-template-columns: minmax(0, 1fr);
+
+		@include microbe-media($breakpoint-md) {
+			gap: microbe-rem(40);
+			grid-template-columns: minmax(0, 12fr) minmax(0, 11fr);
+		}
+
+		@include microbe-media($screen-vw) {
+			gap: vw(220);
+		}
+	}
+
+	&__image {
+		position: relative;
+		> img {
+			position: relative;
+			z-index: 1;
+		}
+	}
+
+	&__decor {
+		position: absolute;
+		z-index: 0;
+		bottom: 0;
+		right: microbe-rem(-190);
+
+		@include microbe-media($screen-vw) {
+			right: vw(-190);
+		}
+	}
+
+	&__content {
+		@include microbe-media($screen-vw) {
+			padding-right: vw(150);
+		}
+	}
+
+	&__quote {
+		font-family: 'PT Serif', sans-serif;
+		font-style: italic;
+		line-height: microbe-em(40, 36);
+		font-size: microbe-rem(22);
+
+		@include microbe-media($breakpoint-md) {
+			font-size: microbe-rem(36);
+		}
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(36);
+		}
+
+		&::before {
+			display: block;
+			content: '“';
+			position: relative;
+			line-height: 1;
+			font-weight: 400;
+			font-size: microbe-rem(48);
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(96);
+			}
+
+			@include microbe-media($screen-vw) {
+				font-size: vw(96);
+			}
+		}
+	}
+
+	&__description {
+		font-size: microbe-rem(15);
+		line-height: microbe-em(20, 15);
+		color: var(--color-faint-strong);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(15);
+		}
+
+		ul {
+			padding-left: microbe-rem(30);
+
+			@include microbe-media($screen-vw) {
+				padding-left: vw(30);
+			}
+
+			li + li {
+				margin-top: microbe-rem(15);
+
+				@include microbe-media($screen-vw) {
+					margin-top: vw(15);
+				}
+			}
+		}
+	}
+}

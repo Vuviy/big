@@ -1,0 +1,18 @@
+.slider-pagination {
+	$this: &;
+
+	display: grid;
+	grid-template-columns: max-content;
+	grid-auto-flow: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	z-index: $zi-basic;
+	bottom: microbe-rem(30) !important;
+	gap: microbe-rem(20);
+
+	@include microbe-media($screen-vw) {
+		bottom: vw(30) !important;
+		gap: vw(20);
+	}
+}

@@ -1,0 +1,22 @@
+.catalog-filter {
+	$this: &;
+
+	@include microbe-media($screen-vw, max) {
+		position: fixed;
+		height: 100%;
+		overflow: auto;
+		top: 0;
+		right: 100%;
+		background-color: var(--color-white);
+		width: microbe-rem(340);
+		z-index: 999;
+		transform: translateX(0);
+		padding: microbe-rem(20);
+		box-sizing: border-box;
+		transition: transform $duration-fast;
+
+		&.is-open {
+			transform: translateX(100%);
+		}
+	}
+}

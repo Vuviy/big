@@ -1,0 +1,120 @@
+.header {
+	$this: &;
+
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: $zi-header;
+
+	&__top {
+		display: flex;
+		align-items: center;
+		background-color: var(--color-base-strong);
+
+		@include microbe-media($screen-vw) {
+			padding: vw(10) 0;
+		}
+
+		@include microbe-media($screen-vw, max) {
+			height: microbe-rem($header-mobile-height);
+		}
+	}
+
+	&__top-inner {
+		display: flex;
+		align-items: center;
+
+		@include microbe-media($screen-vw) {
+			display: grid;
+			grid-template-columns: max-content;
+			grid-auto-flow: column;
+			gap: vw(18);
+		}
+	}
+
+	&__bottom {
+		display: flex;
+		align-items: center;
+		background-color: var(--color-base-strong);
+
+		@include microbe-media($screen-vw) {
+			background-color: var(--color-black);
+			height: vw(67);
+			padding: vw($header-bottom-bar-v-pad) 0;
+		}
+	}
+
+	&__bottom-menu {
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-between;
+		gap: microbe-rem(20);
+
+		@include microbe-media($screen-vw) {
+			gap: vw(20);
+		}
+	}
+
+	&__bottom-inner {
+		align-items: center;
+
+		&--menu {
+			display: grid;
+			grid-template-columns: max-content;
+			grid-auto-flow: column;
+
+			@include microbe-media($screen-vw) {
+				gap: vw(20);
+				padding: vw(5) 0;
+			}
+		}
+
+		&--search {
+			display: flex;
+			justify-content: center;
+			pointer-events: none;
+
+			@include microbe-media($screen-vw, max) {
+				padding: microbe-rem($header-bottom-bar-v-pad) 0;
+			}
+		}
+	}
+
+	&__search {
+		pointer-events: auto;
+	}
+
+	&__control-button {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+
+		@include microbe-media($screen-vw) {
+			width: vw(24);
+			height: vw(24);
+		}
+	}
+
+	&__dropdown-menu {
+		--height: 0;
+
+		position: absolute;
+		z-index: 1;
+		top: 100%;
+		left: 0;
+		right: 0;
+		height: var(--height, 0);
+		visibility: hidden;
+		opacity: 0;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		transition: height $duration-flash ease-in, visibility $duration-light ease, opacity $duration-light ease-out;
+
+		&.is-active {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}

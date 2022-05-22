@@ -1,0 +1,25 @@
+.tooltip {
+	$this: &;
+
+	line-height: 0;
+
+	&__icon {
+		--icon-color: var(--color-pantone-gray);
+
+		width: microbe-rem(16);
+		height: microbe-rem(16);
+
+		@include microbe-media($screen-vw) {
+			width: vw(16);
+			height: vw(16);
+		}
+
+		&--faint-strong {
+			--icon-color: var(--color-faint-strong);
+		}
+	}
+
+	&__text {
+		letter-spacing: 0.05em;
+	}
+}

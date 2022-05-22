@@ -1,0 +1,19 @@
+.sticky-block {
+	$this: &;
+
+	position: sticky;
+
+	&--top {
+		top: 0;
+	}
+
+	&--checkout {
+		@include microbe-media($breakpoint-md) {
+			top: microbe-rem(100);
+		}
+
+		@include microbe-media($screen-vw) {
+			top: vw(100);
+		}
+	}
+}

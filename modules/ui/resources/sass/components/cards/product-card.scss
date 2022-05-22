@@ -1,0 +1,194 @@
+.product-card {
+	$this: &;
+
+	padding: microbe-rem(20);
+	background-color: var(--color-white);
+	color: var(--color-pantone-gray);
+	border-radius: microbe-rem($br-sm);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	transition: box-shadow $duration-fast ease;
+
+	@include microbe-media($screen-vw) {
+		padding: vw(20);
+		border-radius: vw($br-sm);
+	}
+
+	@media (hover: hover) {
+		&:hover {
+			box-shadow: var(--shadow-default);
+		}
+	}
+
+	&__header {
+		display: grid;
+		grid-template-columns: max-content;
+		grid-auto-flow: column;
+		justify-content: space-between;
+		gap: microbe-rem(30);
+		min-height: microbe-rem(90);
+		margin-bottom: microbe-rem(15);
+
+		@include microbe-media($screen-vw) {
+			gap: vw(30);
+			min-height: vw(90);
+			margin-bottom: vw(15);
+		}
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: microbe-rem(26);
+
+		@include microbe-media($screen-vw) {
+			margin-bottom: vw(26);
+		}
+	}
+
+	&__footer {
+		margin-top: auto;
+
+	}
+
+	&__labels {
+		display: flex;
+		flex-direction: column;
+		gap: microbe-rem(5);
+		align-items: flex-start;
+
+		@include microbe-media($screen-vw) {
+			gap: vw(5);
+		}
+	}
+
+	&__gallery {
+		display: block;
+		width: microbe-rem(192);
+		height: microbe-rem(192);
+		position: relative;
+		margin-bottom: microbe-rem(55);
+
+		@include microbe-media($screen-vw) {
+			width: vw(192);
+			height: vw(192);
+			margin-bottom: vw(55);
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				#{$this}__image {
+					&:first-child {
+						opacity: 0;
+					}
+
+					&:last-child {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
+	&__image {
+		@include microbe-absolute-gap(0, 0);
+
+		display: block;
+		transition: opacity $duration-fast ease;
+
+		&:first-child {
+			z-index: $zi-secondary;
+		}
+
+		&:last-child:not(:only-child) {
+			z-index: $zi-basic;
+			opacity: 0;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__rating {
+		align-self: stretch;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__name {
+		display: block;
+		text-decoration: none;
+		color: var(--color-base-strong);
+		margin-bottom: microbe-rem(10);
+		transition: color $duration-fast ease;
+
+		@include microbe-media($screen-vw) {
+			margin-bottom: vw(10);
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				color: var(--color-pantone-gray);
+			}
+
+			&:active {
+				color: var(--color-black);
+			}
+		}
+	}
+
+	&__price {
+		text-decoration: none;
+		color: var(--color-base-strong);
+	}
+
+	&__old-price {
+		text-decoration: line-through;
+		text-decoration-color: var(--color-critic-strong);
+		font-weight: 400;
+	}
+
+	&__button {
+		--control-font-color: var(--color-pantone-gray);
+
+		line-height: 0;
+		padding: microbe-rem(5);
+		border-radius: var(--control-border-radius);
+		transition: background-color $duration-fast ease;
+
+		@include microbe-media($screen-vw) {
+			padding: vw(5);
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				background-color: rgba(var(--color-pantone-gray-rgb), 0.05);
+			}
+
+			&:active {
+				background-color: rgba(var(--color-pantone-gray-rgb), 0.2);
+			}
+		}
+
+		svg {
+			fill: currentColor;
+			width: microbe-rem(20);
+			height: microbe-rem(20);
+
+			@include microbe-media($screen-vw) {
+				width: vw(20);
+				height: vw(20);
+			}
+		}
+
+		&.is-active {
+			--control-font-color: var(--color-black);
+		}
+	}
+}

@@ -1,0 +1,11 @@
+<?php
+
+namespace DummyNamespace;
+
+use WezomCms\Core\Http\Controllers\SiteController;
+use NamespacedDummyModel;
+
+class DummyClass extends SiteController
+{
+    //
+}

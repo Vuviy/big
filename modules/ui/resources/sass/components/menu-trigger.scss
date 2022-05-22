@@ -1,0 +1,20 @@
+.menu-trigger {
+	$this: &;
+
+	&__button {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-end;
+		width: microbe-rem(30);
+		height: microbe-rem(20);
+	}
+
+	&__line {
+		border-radius: microbe-rem(3);
+		width: 100%;
+		height: microbe-rem(2);
+		background-color: var(--color-white);
+		transition: width $duration-fast ease-out;
+	}
+}

@@ -1,0 +1,157 @@
+._fz-xxl {
+	font-size: microbe-rem(24);
+	line-height: microbe-em(48, 36);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(36);
+	}
+}
+
+._fz-xl {
+	font-size: microbe-rem(20);
+	line-height: microbe-em(30, 24);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(24);
+	}
+}
+
+._fz-lg {
+	font-size: microbe-rem(18);
+	line-height: microbe-em(32, 20);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(20);
+	}
+}
+
+._fz-def {
+	font-size: microbe-rem(18);
+	line-height: microbe-em(24, 18);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(18);
+	}
+}
+
+._fz-sm {
+	font-size: microbe-rem(16);
+	line-height: microbe-em(24, 16);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(16);
+	}
+}
+
+._fz-xs {
+	font-size: microbe-rem(15);
+	line-height: microbe-em(20, 15);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(15);
+	}
+}
+
+._fz-xxs {
+	font-size: microbe-rem(13);
+	line-height: microbe-em(18, 14);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(14);
+	}
+}
+
+._fz-xxxs {
+	font-size: microbe-rem(12);
+	line-height: microbe-em(14, 12);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(12);
+	}
+}
+
+._fz-xxxxs {
+	font-size: microbe-rem(10);
+	line-height: microbe-em(16, 10);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(10);
+	}
+}
+
+._color-white {
+	color: var(--color-white);
+}
+
+._color-white-50 {
+	color: rgba(var(--color-white-rgb), 0.5);
+}
+
+._color-pantone-gray {
+	color: var(--color-pantone-gray);
+}
+
+._color-faint-strong {
+	color: var(--color-faint-strong);
+}
+
+._color-base-strong {
+	color: var(--color-base-strong);
+}
+
+._color-black {
+	color: var(--color-black);
+}
+
+._color-black-50 {
+	color: rgba(var(--color-black-rgb), 0.5);
+}
+
+._color-pantone-lemon {
+	color: var(--color-pantone-lemon);
+}
+
+._color-success {
+	color: var(--color-success-strong);
+}
+
+._color-critic-strong {
+	color: var(--color-critic-strong);
+}
+
+._line-through {
+	text-decoration-line: line-through;
+	text-decoration-color: var(--color-critic-strong);
+}
+
+._fw-bold {
+	font-weight: $font-weight-bold;
+}
+
+._fw-medium {
+	font-weight: $font-weight-medium;
+}
+
+._lh-1 {
+	line-height: 1;
+}
+
+._lh-lg {
+	line-height: microbe-em(35, 18);
+}
+
+._letter-spacing-def {
+	letter-spacing: 0.05em;
+}
+
+._uppercase {
+	text-transform: uppercase;
+}
+
+._no-underline {
+	text-decoration: none;
+}
+
+._underline {
+	text-decoration: underline;
+}

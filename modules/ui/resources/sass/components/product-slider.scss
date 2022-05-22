@@ -1,0 +1,41 @@
+.product-slider {
+	$this: &;
+
+	position: relative;
+	--slider-padding-bottom: #{microbe-rem(70)};
+	padding-bottom: var(--slider-padding-bottom);
+
+	@include microbe-media($screen-vw) {
+		--slider-padding-bottom: #{vw(70)};
+	}
+
+	@include microbe-media($breakpoint-md, max) {
+		--slider-padding-bottom: 0;
+	}
+
+	&__slide {
+		height: 100%;
+	}
+
+	.swiper-container {
+		overflow: visible;
+	}
+
+	.slider-button {
+		&--prev {
+			transform: translate(-15%, -50%);
+
+			@include microbe-media($screen-vw) {
+				transform: translate(-15%, calc(-50% - var(--slider-padding-bottom) / 2));
+			}
+		}
+
+		&--next {
+			transform: translate(15%, -50%);
+
+			@include microbe-media($screen-vw) {
+				transform: translate(15%, calc(-50% - var(--slider-padding-bottom) / 2));
+			}
+		}
+	}
+}

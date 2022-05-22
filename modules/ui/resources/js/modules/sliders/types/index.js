@@ -1,0 +1,10 @@
+// export { default as SliderExample } from './example';
+export { default as SliderProductGalleryThumbs } from './product-gallery-thumbs';
+export { default as SliderProductGallery } from './product-gallery';
+export { default as SliderMain } from './main';
+export { default as SliderNews } from './news';
+export { default as SliderOurHistory } from './our-history';
+export { default as SliderOurReviews } from './our-reviews';
+export { default as SliderOurHistoryYears } from './our-history-years';
+export { default as SliderProductCarouselFiveSlides } from './product-carousel-five-slides';
+export { default as SliderProductCarouselFourSlides } from './product-carousel-four-slides';

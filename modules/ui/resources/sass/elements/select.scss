@@ -1,0 +1,11 @@
+select {
+	width: var(--control-width);
+	height: var(--control-height);
+	padding: 0 var(--control-padding);
+	border: 1px solid var(--color-pantone-gray2);
+	border-radius: microbe-rem($br-sm);
+
+	@include microbe-media($screen-vw) {
+		border-radius: vw($br-sm);
+	}
+}

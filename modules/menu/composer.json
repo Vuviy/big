@@ -1,0 +1,33 @@
+{
+    "name": "wezom-cms/menu",
+    "description": "Wezom CMS menu module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Menu\\": "src/",
+            "WezomCms\\Menu\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WezomCms\\Menu\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Menu\\MenuServiceProvider"
+            ]
+        }
+    }
+}

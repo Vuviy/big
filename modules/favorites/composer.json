@@ -1,0 +1,34 @@
+{
+    "name": "wezom-cms/favorites",
+    "description": "Wezom CMS favorites module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "wezom-cms/core": "^8.1"
+    },
+    "suggest": {
+        "wezom-cms/users": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Favorites\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Favorites\\FavoritesServiceProvider"
+            ],
+            "aliases": {
+                "Favorites": "WezomCms\\Favorites\\Facades\\Favorites"
+            }
+        }
+    }
+}

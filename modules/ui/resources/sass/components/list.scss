@@ -1,0 +1,27 @@
+.list {
+	$this: &;
+
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+
+	&--blocks {
+		#{$this}__item {
+			&::before {
+				content: '';
+				width: microbe-rem(9);
+				height: microbe-rem(9);
+				background-color: var(--color-faint-strong);
+				border-radius: 50%;
+				display: block;
+				margin-right: microbe-rem(20);
+
+				@include microbe-media($screen-vw) {
+					width: vw(9);
+					height: vw(9);
+					margin-right: vw(20);
+				}
+			}
+		}
+	}
+}

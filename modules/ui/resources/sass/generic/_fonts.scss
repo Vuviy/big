@@ -1,0 +1,46 @@
+@import '../settings/webpack';
+
+@font-face {
+	font-family: 'Google Sans';
+	src: url($STATIC_PATH + 'fonts/GoogleSans-Regular.woff2') format('woff2'),
+	url($STATIC_PATH + 'fonts/GoogleSans-Regular.woff') format('woff');
+	font-weight: $font-weight-regular;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Google Sans';
+	src: url($STATIC_PATH + 'fonts/GoogleSans-Medium.woff2') format('woff2'),
+	url($STATIC_PATH + 'fonts/GoogleSans-Medium.woff') format('woff');
+	font-weight: $font-weight-medium;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Google Sans';
+	src: url($STATIC_PATH + 'fonts/GoogleSans-Bold.woff2') format('woff2'),
+	url($STATIC_PATH + 'fonts/GoogleSans-Bold.woff') format('woff');
+	font-weight: $font-weight-bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PT Serif';
+	src: url($STATIC_PATH + 'fonts/PTSerif-Italic.woff2') format('woff2'),
+	url($STATIC_PATH + 'fonts/PTSerif-Italic.woff') format('woff');
+	font-weight: $font-weight-regular;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PT Serif';
+	src: url($STATIC_PATH + 'fonts/PTSerif-BoldItalic.woff2') format('woff2'),
+	url($STATIC_PATH + 'fonts/PTSerif-BoldItalic.woff') format('woff');
+	font-weight: $font-weight-bold;
+	font-style: italic;
+	font-display: swap;
+}

@@ -1,0 +1,41 @@
+.cabinet-link {
+	$this: &;
+
+	display: inline-flex;
+	align-items: center;
+	color: var(--color-white);
+	text-decoration: none;
+	cursor: pointer;
+	transition: color $duration-flash ease-in;
+
+	@include microbe-media($screen-vw) {
+		padding: vw(9) vw(13);
+	}
+
+	@media (hover: hover) {
+		&:hover {
+			color: var(--color-pantone-gray2);
+		}
+
+		&:active {
+			color: var(--color-pantone-gray);
+		}
+	}
+
+	&__icon {
+		margin-bottom: microbe-rem(2);
+
+		@include microbe-media($screen-vw) {
+			margin-bottom: vw(2);
+		}
+	}
+
+	&__text {
+		font-size: microbe-rem(15);
+		line-height: microbe-em(20, 15);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(15);
+		}
+	}
+}

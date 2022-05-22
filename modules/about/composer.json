@@ -1,0 +1,32 @@
+{
+    "name": "wezom-cms/about",
+    "description": "Wezom CMS about module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        },
+        {
+            "name": "Ryzhik Evgeniy",
+            "email": "ryzhik.e@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "wezom-cms/core": "^8.1",
+        "wezom-cms/our-team": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\About\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\About\\AboutServiceProvider"
+            ]
+        }
+    }
+}

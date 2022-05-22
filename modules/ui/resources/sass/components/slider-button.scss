@@ -1,0 +1,76 @@
+@import '../settings/all-settings';
+@import '../tools/all-tools';
+
+.slider-button {
+    $this: &;
+
+    position: absolute;
+    z-index: 3;
+
+	&--horizontal {
+		top: 50%;
+
+		&#{$this}--prev {
+			left: 0;
+			transform: translate(0, -50%);
+
+			@include microbe-media($breakpoint-md) {
+				transform: translate(-50%, -50%);
+			}
+		}
+
+		&#{$this}--next {
+			right: 0;
+			transform: translate(0, -50%);
+
+			@include microbe-media($breakpoint-md) {
+				transform: translate(50%, -50%);
+			}
+		}
+	}
+
+	.swiper-container-horizontal &{
+		top: 50%;
+
+		&--prev {
+			left: 0;
+			transform: translate(-50%, -50%);
+		}
+
+		&--next {
+			right: 0;
+			transform: translate(50%, -50%);
+		}
+	}
+
+	.swiper-container-vertical &{
+		left: 50%;
+		transform: translate(-50%, 0);
+
+		&--prev {
+			bottom: 100%;
+			margin-bottom: microbe-rem(5);
+
+			@include microbe-media($screen-vw) {
+				margin-bottom: vw(5);
+			}
+		}
+
+		&--next {
+			top: 100%;
+			margin-top: microbe-rem(5);
+
+			@include microbe-media($screen-vw) {
+				margin-top: vw(5);
+			}
+		}
+
+		svg {
+			transform: rotate(90deg);
+		}
+	}
+
+    &.swiper-button-lock {
+        display: none !important;
+    }
+}

@@ -1,0 +1,48 @@
+.main-menu {
+	$this: &;
+
+	&__list {
+		display: flex;
+	}
+
+	&__link {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		position: relative;
+		color: var(--color-white);
+		text-decoration: none;
+		font-size: vw(14);
+		font-weight: $font-weight-bold;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: color $duration-flash ease-in, text-decoration $duration-flash ease-in;
+
+		@include microbe-media($screen-vw) {
+			padding: vw(7) vw(16);
+		}
+
+		@media (hover: hover) {
+			&:not(.is-active):hover {
+				color: var(--color-pantone-gray2);
+			}
+
+			&:not(.is-active):active {
+				color: var(--color-pantone-gray);
+			}
+		}
+
+		&.is-active {
+			cursor: default;
+			color: var(--color-pantone-lemon) !important;
+		}
+	}
+
+	&__link-icon {
+		line-height: 0;
+
+		@include microbe-media($screen-vw) {
+			margin-right: vw(8);
+		}
+	}
+}

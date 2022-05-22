@@ -1,0 +1,4 @@
+/// @type String 'modern' | 'legacy'
+$ENV: 'modern' !default;
+$STATIC_PATH: '/' !default;
+$PUBLIC_PATH: '/' !default;

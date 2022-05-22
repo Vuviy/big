@@ -1,0 +1,44 @@
+.logo {
+    $this: &;
+
+	display: flex;
+
+	@media (hover: hover) {
+		&:hover {
+			#{$this}__image {
+				fill: var(--color-pantone-lemon);
+			}
+		}
+	}
+
+    &__link {
+        display: block;
+		line-height: 0;
+    }
+
+    &__image {
+        fill: var(--color-white);
+		transition: fill $duration-fast ease-in;
+		width: microbe-rem(173);
+
+		@include microbe-media($breakpoint-md) {
+			width: microbe-rem(200);
+		}
+
+		@include microbe-media($screen-vw) {
+			width: vw(251);
+		}
+    }
+
+	&--theme-yellow {
+		#{$this}__image {
+			fill: var(--color-pantone-lemon);
+		}
+	}
+
+	&--theme-black {
+		#{$this}__image {
+			fill: var(--color-black);
+		}
+	}
+}

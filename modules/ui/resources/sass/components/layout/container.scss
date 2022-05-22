@@ -1,0 +1,110 @@
+.container {
+	$this: &;
+
+	max-width: calc(var(--container-max-width) + #{microbe-rem(20 * 2)});
+	padding: microbe-rem(0) microbe-rem(20);
+	width: 100%;
+	margin: 0 auto;
+
+	@include microbe-media($screen-vw) {
+		max-width: calc(var(--container-max-width) + #{vw(20 * 2)});
+		padding: 0 vw(20);
+	}
+
+	.container {
+		padding: 0;
+
+		&--slider {
+			padding: microbe-rem(0) microbe-rem(30);
+
+			@include microbe-media($breakpoint-xxs) {
+				padding: microbe-rem(0) microbe-rem(40);
+			}
+
+			@include microbe-media($breakpoint-xs) {
+				padding: microbe-rem(0) microbe-rem(30);
+			}
+
+			@include microbe-media($screen-vw) {
+				padding: 0 vw(20);
+			}
+		}
+	}
+
+	&--overflow {
+		overflow: hidden;
+	}
+
+	&--full {
+		max-width: 100%;
+
+		@include microbe-media($screen-vw) {
+			max-width: 100%;
+			padding: 0 vw(20);
+		}
+	}
+
+	&--wide {
+		padding: 0 !important; // sass-lint:disable-line no-important
+	}
+
+	&--lg {
+		@include microbe-media($screen-vw) {
+			max-width: calc(#{vw(1428)} + #{vw(20 * 2)});
+		}
+	}
+
+	&--def {
+		@include microbe-media($screen-vw) {
+			max-width: calc(#{vw(1140)} + #{vw(20 * 2)});
+		}
+	}
+
+	&--md {
+		@include microbe-media($screen-vw) {
+			max-width: calc(#{vw(928)} + #{vw(20 * 2)});
+		}
+	}
+
+	&--sm {
+		@include microbe-media($screen-vw) {
+			max-width: calc(#{vw(850)} + #{vw(20 * 2)});
+		}
+	}
+
+	&--slider {
+		padding: microbe-rem(0) microbe-rem(30);
+
+		@include microbe-media($breakpoint-xxs) {
+			padding: microbe-rem(0) microbe-rem(40);
+		}
+
+		@include microbe-media($breakpoint-xs) {
+			padding: microbe-rem(0) microbe-rem(30);
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: 0 vw(30);
+		}
+	}
+
+	&--slider-transformed {
+		padding: microbe-rem(0) microbe-rem(20);
+
+		@include microbe-media($breakpoint-xxs) {
+			padding: microbe-rem(0) microbe-rem(20);
+		}
+
+		@include microbe-media($breakpoint-xs) {
+			padding: microbe-rem(0) microbe-rem(20);
+		}
+
+		@include microbe-media($breakpoint-sm) {
+			padding: microbe-rem(0) microbe-rem(30);
+		}
+
+		@include microbe-media($screen-vw) {
+			padding: 0 vw(20);
+		}
+	}
+}

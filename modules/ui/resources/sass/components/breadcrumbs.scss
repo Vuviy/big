@@ -1,0 +1,53 @@
+.breadcrumbs {
+	$this: &;
+
+	padding: microbe-rem(16) 0;
+
+	@include microbe-media($breakpoint-md) {
+		padding: microbe-rem(24) 0;
+	}
+
+	@include microbe-media($screen-vw) {
+		padding: vw(32) 0;
+	}
+
+	&__link {
+		font-size: microbe-rem(10);
+		letter-spacing: 0.05em;
+		color: var(--color-black);
+		text-decoration: none;
+		font-weight: $font-weight-medium;
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(10);
+		}
+
+		&[href] {
+			color: var(--color-pantone-gray);
+
+			@media (hover: hover) {
+				&:hover {
+					color: var(--color-pantone-lemon);
+				}
+
+				&:active {
+					color: var(--color-black);
+				}
+			}
+		}
+	}
+
+	&__separator {
+		background-color: var(--color-pantone-gray);
+		margin: 0 microbe-rem(5);
+		width: microbe-rem(3);
+		height: microbe-rem(3);
+		border-radius: 50%;
+
+		@include microbe-media($screen-vw) {
+			margin: 0 vw(5);
+			width: vw(3);
+			height: vw(3);
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+    "name": "wezom-cms/news",
+    "description": "Wezom CMS news module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\News\\": "src/",
+            "WezomCms\\News\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WezomCms\\News\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\News\\NewsServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.map {
+	$this: &;
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	@include microbe-media($breakpoint-ms, max) {
+		padding-top: 100%;
+	}
+
+	@include microbe-media($breakpoint-df, max) {
+		padding-top: 57.25%;
+	}
+
+	&__display {
+		width: 100%;
+		height: 100%;
+
+		@include microbe-media($breakpoint-df, max) {
+			position: absolute !important;
+			top: 0;
+			left: 0;
+		}
+	}
+}

@@ -1,0 +1,209 @@
+.wysiwyg {
+	@include clearfix;
+
+	font-size: microbe-rem(14);
+	line-height: microbe-em(20, 15);
+	color: var(--color-faint-strong);
+
+	@include microbe-media($screen-vw) {
+		font-size: vw(15);
+	}
+
+	&.mce-content-body {
+		font-size: 16px;
+		font-family: $font-family-default;
+	}
+
+	> * {
+		margin: microbe-rem(20) 0;
+	}
+
+	> :first-child {
+		margin-top: 0 !important; /* stylelint-disable-line declaration-no-important */
+	}
+
+	> :last-child {
+		margin-bottom: 0 !important; /* stylelint-disable-line declaration-no-important */
+	}
+
+	iframe {
+		max-width: 100%;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: bold;
+		color: var(--color-black);
+	}
+
+	ul, ol {
+		li {
+			line-height: microbe-em(20, 15);
+		}
+	}
+
+	h1 {
+		font-size: microbe-rem(32);
+		line-height: microbe-em(48, 36);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(36);
+		}
+
+		&:not(:first-child):not(:only-child) {
+			margin-top: microbe-rem(30);
+
+			@include microbe-media($screen-vw) {
+				margin-top: vw(50);
+			}
+		}
+
+		&:not(:last-child) {
+			margin-bottom: microbe-rem(30);
+
+			@include microbe-media($screen-vw) {
+				margin-bottom: vw(50);
+			}
+		}
+	}
+
+	h2 {
+		font-size: microbe-rem(20);
+		line-height: microbe-em(30, 24);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(24);
+		}
+
+		&:not(:first-child):not(:only-child) {
+			margin-top: microbe-rem(20);
+
+			@include microbe-media($screen-vw) {
+				margin-top: vw(40);
+			}
+		}
+
+		&:not(:last-child) {
+			margin-bottom: microbe-rem(20);
+
+			@include microbe-media($screen-vw) {
+				margin-bottom: vw(40);
+			}
+		}
+	}
+
+	h3 {
+		font-size: microbe-rem(16);
+		line-height: microbe-em(24, 18);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(18);
+		}
+	}
+
+	h4 {
+		font-size: microbe-rem(14);
+		line-height: microbe-em(24, 16);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(16);
+		}
+	}
+
+	h5 {
+		font-size: microbe-rem(13);
+		line-height: microbe-em(21, 15);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(15);
+		}
+	}
+
+	h6 {
+		font-size: microbe-rem(12);
+		line-height: microbe-em(20, 14);
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(14);
+		}
+	}
+
+	h3, h4, h5, h6 {
+		margin-bottom: microbe-rem(15);
+
+		&:not(:first-child):not(:only-child) {
+			margin-top: microbe-rem(15);
+
+			@include microbe-media($screen-vw) {
+				margin-top: vw(30);
+			}
+		}
+
+		&:not(:last-child) {
+			margin-bottom: microbe-rem(15);
+
+			@include microbe-media($screen-vw) {
+				margin-bottom: vw(30);
+			}
+		}
+	}
+
+	img {
+		&:not(:first-child):not(:only-child) {
+			margin-top: microbe-rem(30);
+
+			@include microbe-media($screen-vw) {
+				margin-top: vw(50);
+			}
+		}
+
+		&:not(:last-child) {
+			margin-bottom: microbe-rem(30);
+
+			@include microbe-media($screen-vw) {
+				margin-bottom: vw(50);
+			}
+		}
+	}
+
+	blockquote {
+		border-left: microbe-rem(5) solid var(--color-black);
+		padding: microbe-rem(15);
+
+		p {
+			display: inline;
+		}
+	}
+
+	a {
+		color: var(--color-black);
+		text-decoration: none;
+		transition: color 0.25s;
+
+		&:hover {
+			color: rgba(var(--color-black), 0.7);
+			text-decoration: underline;
+		}
+	}
+
+	&_mini {
+		> * {
+			margin: 0;
+		}
+	}
+
+	&--seo-text {
+		max-height: microbe-rem(250);
+		padding-right: microbe-rem(20);
+
+		@include microbe-media($screen-vw) {
+			padding-right: vw(24);
+			max-height: vw(300);
+			overflow: auto;
+		}
+	}
+}

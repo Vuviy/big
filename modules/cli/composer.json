@@ -1,0 +1,28 @@
+{
+    "name": "wezom-cms/cli",
+    "description": "Wezom CMS cli module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "ext-zip": "*",
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Cli\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Cli\\CliServiceProvider"
+            ]
+        }
+    }
+}

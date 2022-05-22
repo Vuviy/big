@@ -1,0 +1,119 @@
+.about-history {
+	$this: &;
+
+	&__year {
+		text-align: center;
+		font-weight: 700;
+		color: var(--color-pantone-gray);
+		font-size: microbe-rem(18);
+		line-height: microbe-em(24, 18);
+		transition: color 0.3s;
+		cursor: pointer;
+
+		@include microbe-media($screen-vw) {
+			font-size: vw(18);
+		}
+
+		.swiper-slide-thumb-active & {
+			color: var(--color-black);
+		}
+	}
+
+	&__slide {
+		position: relative;
+
+		&-title {
+			text-align: center;
+			font-size: microbe-rem(24);
+			line-height: microbe-em(30, 24);
+			font-weight: 700;
+			color: var(--color-black);
+			margin-bottom: microbe-rem(20);
+
+			@include microbe-media($screen-vw) {
+				font-size: vw(24);
+				margin-bottom: vw(20);
+			}
+		}
+
+		&-event {
+			font-family: 'PT Serif', sans-serif;
+			line-height: microbe-em(32, 22);
+			font-style: italic;
+			text-align: center;
+			font-size: microbe-rem(16);
+
+			@include microbe-media($breakpoint-md) {
+				font-size: microbe-rem(22);
+			}
+
+			& + & {
+				margin-top: microbe-rem(20);
+
+				@include microbe-media($breakpoint-md) {
+					margin-top: microbe-rem(25);
+				}
+
+				@include microbe-media($screen-vw) {
+					margin-top: vw(25);
+				}
+			}
+
+			@include microbe-media($screen-vw) {
+				font-size: vw(22);
+			}
+		}
+	}
+
+	&__slider {
+		position: relative;
+
+		.slider-button--horizontal {
+			&.slider-button--prev {
+				transform: translate(0, -50%);
+			}
+			&.slider-button--next {
+				transform: translate(0, -50%);
+			}
+		}
+
+		&--years {
+			padding: microbe-rem(20) microbe-rem(56);
+
+			@include microbe-media($breakpoint-md) {
+				padding: microbe-rem(20) microbe-rem(86);
+			}
+
+			@include microbe-media($screen-vw) {
+				padding: vw(20) vw(86);
+			}
+
+			.swiper-slide {
+				position: relative;
+				padding: 0 microbe-rem(40);
+
+				&:not(:last-child) {
+					&::after {
+						position: absolute;
+						top: 50%;
+						right: 0;
+						transform: translate(50%, -50%);
+						width: 2px;
+						height: 2px;
+						border-radius: 50%;
+						pointer-events: none;
+						background-color: var(--color-pantone-gray);
+
+						@include microbe-media($breakpoint-sm) {
+							content: '';
+						}
+					}
+				}
+
+				@include microbe-media($screen-vw) {
+					padding: 0 vw(40);
+				}
+			}
+		}
+	}
+}

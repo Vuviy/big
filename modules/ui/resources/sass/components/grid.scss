@@ -1,0 +1,27 @@
+.grid {
+	$this: &;
+
+	&--top-categories {
+		@include microbe-media($breakpoint-md, max) {
+			flex-wrap: nowrap;
+			overflow-x: auto;
+		}
+
+		#{$this}__cell {
+			@include microbe-media($breakpoint-md, max) {
+				min-width: microbe-rem(100);
+			}
+		}
+	}
+
+	&--categories {
+		@include microbe-media($breakpoint-md, max) {
+			flex-wrap: nowrap;
+			overflow-x: auto;
+		}
+
+		#{$this}__cell {
+			min-width: microbe-rem(150);
+		}
+	}
+}

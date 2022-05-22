@@ -1,0 +1,45 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Foundation\Http\FormRequest;
+use WezomCms\Core\Traits\LocalizedRequestTrait;
+
+class DummyClass extends FormRequest
+{
+    use LocalizedRequestTrait;
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return $this->localizeRules(
+            [
+                'name' => 'required|string|max:191',
+            ],
+            [
+                'published' => 'required|bool',
+            ]
+        );
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return $this->localizeAttributes(
+            [
+                'name' => __('cms-core::admin.layout.Name'),
+            ],
+            [
+                'published' => __('cms-core::admin.layout.Published'),
+            ]
+        );
+    }
+}

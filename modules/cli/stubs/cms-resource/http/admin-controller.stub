@@ -1,0 +1,48 @@
+<?php
+
+namespace DummyNamespace;
+
+use WezomCms\Core\Http\Controllers\AbstractCRUDController;
+use NamespacedDummyFormRequest;
+use NamespacedDummyModel;
+
+class DummyClass extends AbstractCRUDController
+{
+    /**
+     * Model name.
+     *
+     * @var string
+     */
+    protected $model = DummyModel::class;
+
+    /**
+     * Base view path name.
+     *
+     * @var string
+     */
+    protected $view = 'DummyViewPath';
+
+    /**
+     * Resource route name.
+     *
+     * @var string
+     */
+    protected $routeName = 'DummyRouteName';
+
+    /**
+     * Form request class name.
+     *
+     * @var string
+     */
+    protected $request = DummyFormRequest::class;
+
+    /**
+     * Resource name for breadcrumbs and title.
+     *
+     * @return string
+     */
+    protected function title(): string
+    {
+        return null;
+    }
+}

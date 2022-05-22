@@ -1,0 +1,121 @@
+.checkbox {
+    $this: &;
+
+    user-select: none;
+
+    &__label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: box-shadow $duration-fast ease, border-color $duration-fast ease;
+    }
+
+
+
+    &__control {
+        display: none;
+    }
+
+    &__text {
+        margin-left: microbe-rem(10);
+
+        @include microbe-media($screen-vw) {
+            margin-left: vw(10);
+        }
+    }
+
+	&--default {
+		#{$this}__text {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			width: 100%;
+			white-space: nowrap;
+		}
+
+		#{$this}__label {
+			&:active {
+				#{$this}__checkmark {
+					background-color: var(--color-pantone-lemon);
+				}
+			}
+		}
+
+		#{$this}__control {
+			&:checked {
+				+ #{$this}__label {
+					#{$this}__checkmark {
+						background-color: var(--color-pantone-lemon);
+						border-color: var(--color-pantone-lemon);
+
+						svg {
+							transform: scale(1);
+							opacity: 1;
+							visibility: visible;
+						}
+					}
+
+					#{$this}__text {
+						color: var(--color-black);
+					}
+				}
+			}
+		}
+
+		#{$this}__checkmark {
+			cursor: pointer;
+			background-color: var(--color-white);
+			border: 1px solid var(--color-faint-weak);
+			width: microbe-rem(16);
+			height: microbe-rem(16);
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: microbe-rem($br-sm);
+			flex-shrink: 0;
+			transition: $duration-flash;
+
+			@include microbe-media($screen-vw) {
+				width: vw(16);
+				height: vw(16);
+				border-radius: vw($br-sm);
+			}
+
+			svg {
+				transform: scale(0);
+				fill: var(--color-black);
+				opacity: 0;
+				visibility: hidden;
+				transition: $duration-flash;
+			}
+		}
+	}
+
+	&--with-no-checkmark {
+		#{$this}__checkmark {
+			cursor: pointer;
+			background-color: var(--color-pantone-gray);
+			width: microbe-rem(9);
+			height: microbe-rem(9);
+			border-radius: 50%;
+			flex-shrink: 0;
+			transition: $duration-flash;
+
+			@include microbe-media($screen-vw) {
+				width: vw(9);
+				height: vw(9);
+			}
+		}
+
+		#{$this}__control {
+			&:checked {
+				+ #{$this}__label {
+					#{$this}__checkmark {
+						background-color: var(--color-pantone-lemon);
+					}
+				}
+			}
+		}
+	}
+}

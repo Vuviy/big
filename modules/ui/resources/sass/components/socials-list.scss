@@ -1,0 +1,16 @@
+.socials-list {
+	display: grid;
+	grid-template-columns: max-content;
+	grid-auto-flow: column;
+	align-items: center;
+	gap: microbe-rem(15);
+
+	@include microbe-media($screen-vw) {
+		gap: vw(10);
+	}
+
+	&__link {
+		display: block;
+		line-height: 0;
+	}
+}

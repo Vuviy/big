@@ -1,0 +1,28 @@
+{
+    "name": "wezom-cms/sitemap",
+    "description": "Wezom CMS sitemap module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Protsiv Andrey",
+            "email": "protsiv.a@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "ext-xmlwriter": "*",
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Sitemap\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Sitemap\\SitemapServiceProvider"
+            ]
+        }
+    }
+}

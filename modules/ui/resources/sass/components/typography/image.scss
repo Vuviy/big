@@ -1,0 +1,35 @@
+.image {
+	$this: &;
+
+	&--product-preview {
+		width: microbe-rem(72);
+		height: microbe-rem(96);
+
+		@include microbe-media($screen-vw) {
+			width: vw(72);
+			height: vw(96);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&--checkout-product {
+		width: microbe-rem(88);
+		height: microbe-rem(88);
+
+		@include microbe-media($screen-vw) {
+			width: vw(88);
+			height: vw(88);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+}

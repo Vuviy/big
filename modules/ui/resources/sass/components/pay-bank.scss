@@ -1,0 +1,150 @@
+.pay-bank {
+	$this: &;
+
+	display: block;
+	position: relative;
+
+	&__inner {
+		display: grid;
+		align-items: center;
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: 2fr;
+		grid-gap: microbe-rem(20);
+		padding: microbe-rem(25) microbe-rem(20);
+		border-radius: microbe-rem($br-sm);
+		border: 1px solid var(--color-pantone-gray);
+		min-height: microbe-rem(63);
+		transition: border-color $duration-fast ease;
+
+		@include microbe-media($breakpoint-sm) {
+			grid-template-columns: microbe-rem(48) microbe-rem(150) microbe-rem(96) auto;
+			grid-template-rows: 1fr;
+		}
+
+		@include microbe-media($breakpoint-md) {
+			grid-template-columns: repeat(12, 1fr);
+			grid-template-rows: 2fr;
+		}
+
+		@include microbe-media($screen-vw) {
+			grid-template-columns: vw(48) vw(150) vw(96) auto;
+			grid-template-rows: 1fr;
+			padding: vw(8) vw(25);
+			border-radius: vw($br-sm);
+			grid-gap: vw(20);
+			min-height: vw(63);
+		}
+
+		span {
+			&:nth-child(1) {
+				grid-area: 1 / 1 / 2 / 5;
+
+				@include microbe-media($breakpoint-sm) {
+					grid-area: auto;
+				}
+
+				@include microbe-media($breakpoint-md) {
+					grid-area: 1 / 1 / 2 / 5;
+				}
+
+				@include microbe-media($screen-vw) {
+					grid-area: auto;
+				}
+			}
+
+			&:nth-child(2) {
+				grid-area: 1 / 5 / 2 / -1;
+				text-align: right;
+
+				@include microbe-media($breakpoint-sm) {
+					grid-area: auto;
+					text-align: left;
+				}
+
+				@include microbe-media($breakpoint-md) {
+					grid-area: 1 / 5 / 2 / -1;
+					text-align: right;
+				}
+
+				@include microbe-media($screen-vw) {
+					grid-area: auto;
+					text-align: left;
+				}
+			}
+
+			&:nth-child(3) {
+				grid-area: 2 / 1 / -1 / 5;
+
+				@include microbe-media($breakpoint-sm) {
+					grid-area: auto;
+				}
+
+				@include microbe-media($breakpoint-md) {
+					grid-area: 2 / 1 / -1 / 5;
+				}
+
+				@include microbe-media($screen-vw) {
+					grid-area: auto;
+				}
+			}
+
+			&:nth-child(4) {
+				grid-area: 2 / 5 / -1 / -1;
+
+				@include microbe-media($breakpoint-sm) {
+					grid-area: auto;
+				}
+
+				@include microbe-media($breakpoint-md) {
+					grid-area: 2 / 5 / -1 / -1;
+				}
+
+				@include microbe-media($screen-vw) {
+					grid-area: auto;
+				}
+			}
+		}
+	}
+
+	&__logo {
+		display: block;
+		line-height: 0;
+	}
+
+	&__label {
+		padding: microbe-rem(4) microbe-rem(8);
+		background-color: #D3FFEA;
+		border-radius: microbe-rem($br-lg);
+
+		@include microbe-media($screen-vw) {
+			padding: vw(4) vw(8);
+			border-radius: vw($br-lg);
+		}
+	}
+
+	&__badge {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: microbe-rem(-7);
+		right: microbe-rem(-7);
+		width: microbe-rem(20);
+		height: microbe-rem(20);
+		border-radius: 50%;
+		background-color: var(--color-pantone-lemon);
+
+		@include microbe-media($screen-vw) {
+			width: vw(20);
+			height: vw(20);
+			top: vw(-7);
+			right: vw(-7);
+		}
+	}
+
+	&__input {
+		&:checked + #{$this}__inner {
+			border-color: var(--color-pantone-lemon);
+		}
+	}
+}

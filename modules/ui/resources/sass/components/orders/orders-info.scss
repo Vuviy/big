@@ -1,0 +1,28 @@
+.orders-info {
+	background-color: var(--color-faint-weak);
+	padding: microbe-rem(10);
+
+	@include microbe-media($breakpoint-md) {
+		padding: microbe-rem(20);
+	}
+
+	@include microbe-media($screen-vw) {
+		padding: vw(20);
+	}
+
+	&__item {
+		line-height: microbe-em(16, 14);
+
+		& + & {
+			margin-top: microbe-rem(6);
+
+			@include microbe-media($microbe-breakpoint-md) {
+				margin-top: microbe-rem(10);
+			}
+
+			@include microbe-media($screen-vw) {
+				margin-top: vw(10);
+			}
+		}
+	}
+}

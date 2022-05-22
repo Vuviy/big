@@ -1,0 +1,28 @@
+{
+    "name": "wezom-cms/branches",
+    "description": "Wezom CMS branches module",
+    "type": "library",
+    "version": "8.1.0",
+    "authors": [
+        {
+            "name": "Chaplygin Dmitriy",
+            "email": "chaplygin.d@wezom.com.ua"
+        }
+    ],
+    "require": {
+        "wezom-cms/core": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WezomCms\\Branches\\": "src/",
+            "WezomCms\\Branches\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WezomCms\\Branches\\BranchesServiceProvider"
+            ]
+        }
+    }
+}

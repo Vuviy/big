@@ -416,6 +416,7 @@ abstract class AbstractCRUDController extends AdminController
      */
     public function update(Request $request, $id)
     {
+
         /** @var Model $obj */
         $obj = $this->model()::findOrFail($id);
 
@@ -428,7 +429,6 @@ abstract class AbstractCRUDController extends AdminController
             \DB::transaction(function () use ($obj, $formRequest) {
                 $data = $this->fillUpdateData($obj, $formRequest);
 
-//                dd(method_exists($obj, 'imageSettings'));
                 event('crud:fill-update-data:' . $this->model(), compact('obj', 'formRequest'));
 
                 $obj->update($data);

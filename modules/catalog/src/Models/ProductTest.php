@@ -236,7 +236,7 @@ class ProductTest extends EloquentModel implements StorageInterface, Favorable, 
      */
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(CategoryTest::class);
     }
 
     /**

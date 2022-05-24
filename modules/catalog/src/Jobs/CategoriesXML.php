@@ -3,17 +3,24 @@
 namespace WezomCms\Catalog\Jobs;
 
 use Cocur\Slugify\Slugify;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use WezomCms\Catalog\Http\Controllers\Admin\XmlTestController;
 use WezomCms\Catalog\Models\CategoryTest;
 use WezomCms\Catalog\Models\Product;
 
-class CategoriesXML
+class CategoriesXML implements ShouldQueue
 {
     use Dispatchable;
     use SerializesModels;
 
+
+    private $arr = [];
+
+    public function __construct($arr){
+        $this->arr = $arr;
+    }
     /**
      * Execute the job.
      *
@@ -21,10 +28,15 @@ class CategoriesXML
      */
     public function handle()
     {
-       $file = new XmlTestController();
+
+//        $file  = file_get_contents(asset('data.xml'));
+
+//        $p = Product::all();
+
+//       $file = new XmlTestController();
 
         $slug = new Slugify();
-        foreach ($file->categories() as $cat) {
+        foreach ($this->arr as $cat) {
             CategoryTest::updateOrCreate(
                 ['id' => $cat['id'], 'parent_id' => $cat['parent_id'] ?? NULL],
                 ['ru' => [

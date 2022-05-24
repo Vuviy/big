@@ -43,6 +43,46 @@ class ProductsXML implements ShouldQueue
         $slug = new Slugify();
 
         foreach ($this->arr as $product) {
+            
+            
+            
+            
+             //add specifications and spec value
+            $prodSpec = [];
+            foreach ($product['param'] as $key => $value){
+                Log::info('in param');
+                if(!is_array($value)){
+                    Log::info('if value !== empty');
+
+                    $specification = Specification::updateOrCreate(
+                        ['slug' => str_slug($key)],
+                        ['color' => null, 'ru' => ['name' => $key]]);
+                    Log::info('specification added');
+
+
+                    $specValue = $specification->specValues()->updateOrCreate(
+                        ["slug" => str_slug($value)],
+                        ['color' => null, 'ru' => ['name' => $value]]);
+                    Log::info('specValue added');
+
+
+                    $array = ['specification_id' => $specification->id, 'spec_value_id' => $specValue->id];
+                    array_push($prodSpec, $array);
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
                 ProductTest::updateOrCreate(
                     ['id' => $product['@attributes']['id']],
                     ['available' => $product['available'] ? 1 : 0,

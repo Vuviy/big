@@ -74,7 +74,14 @@ class ProductsXML implements ShouldQueue
             
             
             
-            
+             if(isset($product['vendor'])){
+                $brand = Brand::updateOrCreate(
+                    ['slug' => str_slug($product['vendor'])],
+                    ['ru' => ['name' => $product['vendor']]
+                    ]);
+            } else{
+                $brand = null;
+            }
             
             
             

@@ -2,40 +2,174 @@
 
 namespace WezomCms\Catalog\Http\Controllers\Admin;
 
-use Cocur\Slugify\Slugify;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\Reader\Xml;
+use WezomCms\Catalog\Http\Requests\Admin\ImportRequest;
+use WezomCms\Catalog\Http\Requests\Admin\ProductRequest;
 use WezomCms\Catalog\Jobs\CategoriesXML;
+use WezomCms\Catalog\Jobs\ParceXMLFile;
 use WezomCms\Catalog\Jobs\ProductsXML;
+use WezomCms\Catalog\Models\Brand;
+use WezomCms\Catalog\Models\BrandTranslation;
 use WezomCms\Catalog\Models\CategoryTest;
 use WezomCms\Catalog\Models\CategoryTestTranslation;
 use WezomCms\Catalog\Models\CategoryTranslation;
 use WezomCms\Catalog\Models\Category;
+use WezomCms\Catalog\Models\Import;
 use WezomCms\Catalog\Models\Product;
+use WezomCms\Catalog\Models\ProductSpecification;
 use WezomCms\Catalog\Models\ProductTest;
 use WezomCms\Catalog\Models\ProductImage;
 use WezomCms\Catalog\Models\Specifications\Specification;
+use WezomCms\Core\Http\Controllers\AbstractCRUDController;
 use WezomCms\Core\Image\ImageService;
-use SimpleXMLElement;
+use WezomCms\Core\Traits\AjaxResponseStatusTrait;
 
-
-class XmlTestController
+class XmlController extends AbstractCRUDController
 {
+
+    use AjaxResponseStatusTrait;
+
+    /**
+     * Model name.
+     *
+     * @var string
+     */
+    protected $model = Import::class;
+
+    /**
+     * Base view path name.
+     *
+     * @var string
+     */
+    protected $view = 'cms-catalog::admin.import';
+
+    /**
+     * Resource route name.
+     *
+     * @var string
+     */
+    protected $routeName = 'admin.imports';
+
+    /**
+     * Form request class name.
+     *
+     * @var string
+     */
+    protected $request = ImportRequest::class;
+
     public $file;
 
-    public function __construct()
+    /**
+     * Resource name for breadcrumbs and title.
+     *
+     * @return string
+     */
+    protected function title(): string
     {
+        return __('cms-catalog::admin.Import');
+    }
 
+    public function indexViewData($result, array $viewData): array
+    {
+        //$obj = Import::first();
+        //simplexml_load_file(public_path('storage/xml/'). $obj->file);
+        /// ParceXMLFile::dispatch($obj);
+        return [];
+    }
+
+    public function store()
+    {
+//        $formRequest = app($this->createRequest());
+//
+//        $obj = new $this->model;
+//        $name = date('Y-m-d') . $formRequest->file('file')->getClientOriginalName();
+//        Storage::putFileAs('public/xml', $formRequest->file('file'), $name);
+//        $formRequest->file('file')->store('public/xml');
+//        $obj->fill(['file' => $name]);
+//        $obj->save();
+
+//        $data = Storage::get('public/xml/'. $obj->file);
+
+        $data = asset('data.xml');
+        $this->file = simplexml_load_file($data);
+
+
+
+
+
+//        dd([3684]));
+
+        $p = $this->arrayForSpecification($this->offers());
+        dd($p);
+
+//        ParceXMLFile::dispatch($obj);
+
+
+//        flash(__('cms-core::admin.layout.Data successfully created'))->success();
+
+//        return redirect($this->listRoute('admin.imports'));
+    }
+
+
+    public function _construct()
+    {
         $fileName = asset('data.xml');
         $this->file = simplexml_load_file($fileName);
     }
 
+    public function arrayForSpecification($offers){
+        $params = [];
+        foreach ($offers as $item){
 
-    public function params($offer){
+            foreach ($item['param'] as $key => $value){
+                array_push($params, str_slug($key));
+            }
+//            $unique = array_unique($params);
 
+//            foreach ($unique as $key => $value){
+//                $arr = [];
+//                $arr['slug'] = str_slug($key);
+//                $arr['color'] = null;
+//                $arr['ru'] = ['name' => $key];
+//                array_push($params, $arr);
+//            }
+        }
+        return array_unique($params);
+    }
+
+    public function arrayForSpecValues($offers){
+
+//        $spec = $this->arrayForSpecification($offers);
+//        $spec = [];
+//        for
+//
+//
+//        $unique = array_unique();
+//        return $unique;
+
+//        $specification = [];
+//        foreach ($offers as $item){
+//            foreach ($item['param'] as $key => $value){
+//                $arr = [];
+//                $arr['slug'] = str_slug($key);
+//                $arr['color'] = null;
+//                $arr['ru'] = ['name' => $key];
+//                array_push($params, $arr);
+//            }
+//        }
+//        return $params;
+
+    }
+
+
+    public function params($offer)
+    {
         $param = [];
-        foreach ($offer->param as $par){
+        foreach ($offer->param as $par) {
             $arr = json_decode(json_encode($par->attributes()->name), true);
             array_push($param, $arr);
         }
@@ -47,42 +181,47 @@ class XmlTestController
     }
 
 
-
     public function offers()
     {
-        $array = [];
         $offers = [];
         foreach ($this->file->shop->offers->offer as $off) {
-            $body = json_decode(json_encode($off), true);
-            if(is_array($body['description'])){
-                $body['description'] = NULL;
+            $arr = json_decode(json_encode($off), true);
+
+            $cat = Category::where('import_id', $arr['categoryId'])->first();
+            $catId = $cat->id;
+
+            $arr['param'] = array_combine($this->params($off), $arr['param']);
+
+            if (isset($arr['param']['Аналогичные товары'])) {
+                unset($arr['param']['Аналогичные товары']);
             }
-            $body['param'] = array_combine($this->params($off), $body['param']) ;
+
+            $body = [
+                'import_id' => $arr['@attributes']['id'],
+                'category_id' => $catId,
+                'cost' => $arr['price'],
+                'vendor_code' => $arr['vendorCode'],
+                'available' => $arr['available'] ? 1 : 0,
+                'quantity' => $arr['quantity'],
+                'param' => $arr['param'],
+                'ru' => [
+                    'locale' => 'ru',
+                    'name' => $arr['name'],
+                    'text' => (is_array($arr['description'])) ? null : $arr['description'],
+                    'slug' => str_slug($arr['name']),],
+                'videos' => []
+            ];
+
+            if(isset($arr['vendor'])){
+                $body['vendor'] = $arr['vendor'];
+            }
+            if(isset($arr['picture'])){
+                $body['picture'] = $arr['picture'];
+            }
             array_push($offers, $body);
         }
-
-//        foreach ($array as $product) {
-//            $slug = new Slugify();
-//            $arr = [
-//                'id' => $product['@attributes']['id'],
-//                'available' => $product['available'] ? 1 : 0,
-//                'vendor_code' => $product['vendorCode'],
-//                'cost' => $product['price'],
-//                'category_test_id' => $product['categoryId'],
-//                'ru' => [
-//                    'product_test_id' => $product['@attributes']['id'],
-//                    'locale' => 'ru',
-//                    'name' => $product['name'],
-//                    'text' => $product['description'],
-//                    'slug' => $slug->slugify($product['name']),],
-//                'videos' => []
-//            ];
-//            array_push($offers, $arr);
-//        }
-
         return $offers;
     }
-
 
 
     public function categories()
@@ -93,11 +232,11 @@ class XmlTestController
         foreach ($this->file->shop->categories->category as $cat) {
             array_push($array, json_decode(json_encode($cat), true));
         }
-        foreach ($array as $catagory){
+        foreach ($array as $catagory) {
             $cat = [];
             $cat['name'] = $catagory[0];
             $cat['id'] = $catagory['@attributes']['id'];
-            if(isset($catagory['@attributes']['parentId'])){
+            if (isset($catagory['@attributes']['parentId'])) {
                 $cat['parent_id'] = $catagory['@attributes']['parentId'];
             }
             array_push($categories, $cat);
@@ -105,330 +244,26 @@ class XmlTestController
         return $categories;
     }
 
-    public function specification($product){
+
+    public function upload(Request $request)
+    {
+//        $fileName = asset('data.xml');
+        dd($request);
+//        $this->file = simplexml_load_file($request->file);
+    }
+
+    public function specification($product)
+    {
 
         $specs = [];
-        $slug = new Slugify();
-        foreach ($product['param'] as $key => $value){
+        foreach ($product['param'] as $key => $value) {
             $array = [
-            'published' => 1,
-            'slug' => $slug->slugify($key),
-            'color' => null,
-            'ru' =>['name' => $key]
+                'published' => 1,
+                'slug' => str_slug($key),
+                'ru' => ['name' => $key]
             ];
             array_push($pecs, $array);
         }
-
         return $specs;
     }
-
-    public function index()
-    {
-
-        ProductTest::updateOrCreate(
-            ['id' => 666666666],
-            ['available' => 1 ,
-             'vendor_code' => 6666666,
-             'cost' => 66666666,
-             'category_test_id' => 3416,
-             'SPEC_VALUES' => [
-                 12 => [1],
-                 4 => [1]
-             ],
-             'ru' => [
-                    'product_test_id' => 666666666,
-                    'locale' => 'ru',
-                    'name' => 'QQQQQQQQQ',
-                    'text' => 'QQQQQQQQQQQQ',
-                    'slug' => 'QQQQQQQQ',],
-                'videos' => []
-            ]);
-
-//          Specification::upsert('arr', ['slug'], [
-//                  'slug',
-//                  'ru' => ['name']
-//                  ]
-//        );
-
-//        $specification = Specification::findOrFail(14);
-//
-//
-//        $data = [
-//            'published' => 1,
-//            'slug' => 'QQQQQQQQ',
-//            'color' => null,
-//            'ru' =>['name' => 'QQQQQQQQ']
-//        ];
-//
-//        $specification->specValues()->create($data);
-
-//        CategoriesXML::dispatch($this->categories());
-
-//        $var = [];
-//        $o = collect($this->offers());
-
-        $arr100 = [];
-//        foreach (array_chunk($this->offers(), 100) as $offer) {
-//            array_push($arr100, $offer);
-//            ProductsXML::dispatch($offer);
-//        }
-
-//        $ar10 = [];
-//        foreach (array_chunk($arr100[74], 10) as $of){
-//            array_push($ar10, $of);
-//            ProductsXML::dispatch($of);
-//        }
-
-//        foreach (array_chunk($ar10[2], 2) as $of){
-//            array_push($ar10, $of);
-//        }
-//        $var = $this->offers();
-            $var = 'dd';
-
-        return view('cms-catalog::admin.xmltest', compact('var'));
-    }
 }
-
-
-//=========================
-//=======================
-//"_method" => "PUT"
-//      "_token" => "ejzJwafy1DXIAAuIHJY7ydWR0sZdTgvlvchh21y9"
-//      "ru" => array:7 [▶]
-//      "primarySpecValues" => array:1 [▼
-//        0 => "8"
-//      ]
-//      "SPEC_VALUES" => array:2 [▼
-//        12 => array:1 [▶]
-//        3 => array:1 [▶]
-//      ]
-//      "group_key" => null
-//      "published" => "1"
-//      "available" => "1"
-//      "vendor_code" => "127"
-//      "category_id" => "9"
-//      "model_id" => "2"
-//      "novelty" => "1"
-//      "popular" => "1"
-//      "sale" => "0"
-//      "cost" => "128599"
-//      "old_cost" => "0"
-//      "discount_percentage" => null
-//      "expires_at" => null
-//      "PRODUCT_ACCESSORIES" => array:2 [▶]
-//      "videos" => array:1 [▶]
-//      "proengsoft_jsvalidation" => null
-//      "form-action" => "save"
-//    ]
-
-//=======================
-//=====================
-
-//"ru" => array:1 [▼
-//    "name" => "eerere"
-//  ]
-//  "published" => "1"
-//  "multiple" => "0"
-//  "slug" => "eerere"
-//]
-
-//spec
-//=============
-//=============
-
-
-//        $this->file = simplexml_load_string($fileName);
-
-//        $array = json_decode(json_encode($this->file), TRUE);
-
-
-//        $path = asset('data.xml');
-//
-//// Read entire file into string
-//        $xmlfile = file_get_contents($path);
-//
-//// Convert xml string into an object
-//        $new = simplexml_load_string($xmlfile);
-//
-//// Convert into json
-//        $con = json_encode($new);
-//
-//// Convert into associative array
-//        $newArr = json_decode($con, true);
-//
-//        $var = $newArr;
-
-
-//        foreach ($array as $product) {
-//            $slug = new Slugify();
-//            $arr = [
-//                'id' => $product['@attributes']['id'],
-//                'available' => $product['available'] ? 1 : 0,
-//                'vendor_code' => $product['vendorCode'],
-//                'cost' => $product['price'],
-//                'category_test_id' => $product['categoryId'],
-//                'ru' => [
-//                    'product_test_id' => $product['@attributes']['id'],
-//                    'locale' => 'ru',
-//                    'name' => $product['name'],
-//                    'text' => $product['description'],
-//                    'slug' => $slug->slugify($product['name']),],
-//                'videos' => []
-//            ];
-//            array_push($offers, $arr);
-//        }
-
-//
-
-//            $param = [];
-//            foreach ($off->param as $par){
-////                $arr = [json_decode(json_encode($par), true) => json_decode(json_encode($par), true)];
-//                $arr = [$par->attributes()->name => 'eee'];
-//                array_push($param, $arr);
-//            }
-
-//            $parr = [];
-
-//            for($i = 0; $i < count($body['param']); $i++){
-//                $data[$body['param'][$i]] = $param[$i][0];
-//                array_push($parr, $data);
-////                $parr[$body['param'][$i] = $param[$i][0]];
-//            }
-//            $body['param'] = $param;
-
-
-
-
-
-//        foreach ($array as $offer){
-//            $of = [];
-//            $of['name'] = $offer[0];
-//            $of['id'] = $offer['@attributes']['id'];
-//            if(isset($offer['@attributes']['parentId'])){
-//                $of['parent_id'] = $offer['@attributes']['parentId'];
-//            }
-//            array_push($offers, $of);
-//        }
-//
-
-
-
-//        $fileName = asset('data.xml');
-
-//        $var = new Xml();
-//        $var->canRead($fileName);
-
-//        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader("Xml");
-//        $var = $reader->load($fileName);
-
-//        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xml();
-//        $var = $reader->load($fileName);
-
-// Read entire file into string
-//        $xmlfile = file_get_contents($fileName);
-
-// Convert xml string into an object
-
-// Convert into json
-//        $con = json_encode($xmlfile);
-//
-//// Convert into associative array
-//        $var = json_decode($con, true);
-//        $var = $this->file->shop->offers->offer;
-
-
-//        CategoriesXML::dispatch($this->categories());
-//        $var = $this->offers();
-
-
-//        for($i = 0;count($this->categories()) < $i; $i++){
-//            CategoryTest::create([
-//                'id' => $this->categories()[0]['id'],
-//                'parent_id' => 3
-//            ]);
-//
-//        }
-//        $var = CategoryTest::create([
-//            'parent_id' => 3
-//        ]);
-
-//        $arr =  [
-//            'id'=> 3422,
-//            'published' => 1,
-//            'parent_id' => null,
-//            'show_on_main' => 0,
-//            'show_on_menu' => 0,
-//            'ru' => [
-//                'name' => 'aaaaa',
-//                'slug' => 'aaaaa',
-//                'text' => null,
-//                'title' => null,
-//                'h1' => null,
-//                'keywords' => null,
-//                'description' => null,
-//            ],
-//        ];
-
-
-//        $slug = new Slugify();
-//        foreach ($this->categories() as $cat) {
-//            CategoryTest::updateOrCreate(
-//                ['id' => $cat['id'], 'parent_id' => $cat['parent_id'] ?? NULL],
-//                ['ru' => [
-//                    'category_test_id' => $cat['id'],
-//                    'locale' => 'ru',
-//                    'name' => $cat['name'],
-//                    'slug' => $slug->slugify($cat['name']),]
-//                ]);
-//        }
-
-
-//            Category::create(
-//                [
-//                'id' => 999,
-//                'parent_id' => NULL,
-//                        'ru' => [
-//                            'category_id' => 999,
-//                            'locale' => 'ru',
-//                            'name' => 'ttt',
-//                            'slug' => 'ttt',]
-//                ]
-//            );
-//        }
-
-//        CategoryTranslation::create([
-//            'category_id' => 4,
-//            'locale' => 'ru',
-//            'name' => 'ttt',
-//            'slug' => 'ttt',
-//        ]);
-
-
-//        img=============
-//        $img = new ImageService();
-//        $model = new ProductImage();
-//        $model->product_id = 4;
-//        $sourse = 'https://img.al-style.kz/19510_1.jpg';
-//        $img->uploadImage($model, $sourse);
-//
-//
-//        $slug = new Slugify();
-//        $o = collect($this->offers());
-//        foreach ($o->chunk(500) as $offer){
-//            foreach ($offer as $product) {
-//                    ProductTest::updateOrCreate(
-//                        ['id' => $product['@attributes']['id']],
-//                        ['available' => $product['available'] ? 1 : 0,
-//                          'vendor_code' => $product['vendorCode'],
-//                          'cost' => $product['price'],
-//                          'category_id' => $product['categoryId'],
-//                            'ru' => [
-//                            'product_test_id' => $product['@attributes']['id'],
-//                            'locale' => 'ru',
-//                            'name' => $product['name'],
-//                            'text' => $product['description'],
-//                            'slug' => $slug->slugify($product['name']),],
-//                          'videos' => []
-//                        ]);
-//                }
-//        }
